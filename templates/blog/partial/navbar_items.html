@@ -1,0 +1,19 @@
+
+{% for category in categories %}
+{% if category.sub_categories.active %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{category.title}}
+    </a>
+    <ul class="dropdown-menu">
+        {% for sub in category.sub_categories.active %}
+        <li><a class="dropdown-item" href="{% url 'blog:category_articles' sub.slug %}">{{sub.title}}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'blog:category_articles' category.slug %}">{{category.title}}</a>
+</li>
+{% endif %}
+{% endfor %}

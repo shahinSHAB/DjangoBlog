@@ -1,0 +1,57 @@
+{% load static %}
+{% load extra_tags %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Bootstrap V=5.2 CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- font awesome 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- static files -->
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    <title>{% block title %}{% translate 'base title' %}{% endblock title %}</title>
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- head -->
+        <header id="head">
+            {% include 'blog/navbar.html' %}
+            {% if messages %}
+            <section class="message">
+                {% for msg in messages %}
+                    <p>{{msg}}</p>
+                {% endfor %}
+            </section>
+            {% endif %}
+            <div class="poster">
+                <h1 class="poster_context">{% translate 'Any Blog' %}</h1>
+            </div>
+        </header>
+        <!-- content -->
+        <div class="content">
+            <aside class="blog_aside">
+                {% include "blog/aside.html" %}
+            </aside>
+            <main>
+                {% block content %}{% translate ' default content' %}{% endblock content %}
+                {% block paginate %}{% include "blog/paginate_buttons.html" %}{% endblock paginate %}
+            </main>
+        </div>
+        <!-- footer -->
+        {% include 'blog/footer.html' %}
+    </div>
+</body>
+
+<!-- JavaScript Bundle with Popper for Bootstrap V=5.2 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<!-- Static Files JavaScript -->
+<script src="{% static 'blog/js/base.js' %}"></script>
+</html>

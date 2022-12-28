@@ -1,0 +1,20 @@
+{% load static %}
+{% load i18n %}
+
+<div>
+    <h1>{% translate 'Last Periodic Articles' %}</h1>
+    <hr>
+    <p><a href="{% url 'blog:articles_period' 'last-month' %}">{% translate 'last month articles' %}</a></p>
+    <p><a href="{% url 'blog:articles_period' 'last-week' %}">{% translate 'last week articles' %}</a></p>
+    <p><a href="{% url 'blog:articles_period' 'last-day' %}">{% translate 'last day articles' %}</a></p>
+    <p><a href="{% url 'blog:articles_period' 'last-five-articles' %}">{% translate 'last five articles' %}</a></p>
+</div>
+<div>
+    <h1>{% translate 'Most Viewed Articles' %}</h1>
+    <hr>
+    <p><a href="{% url 'blog:most_viewed_articles' 'last-month' %}">{% translate 'last month articles' %}</a></p>
+    <p><a href="{% url 'blog:most_viewed_articles' 'last-week' %}">{% translate 'last week articles' %}</a></p>
+    <p><a href="{% url 'blog:most_viewed_articles' 'last-day' %}">{% translate 'last day articles' %}</a></p>
+    <p><a href="{% url 'blog:most_viewed_articles' 'last-five-articles' %}">{% translate 'last five articles' %}</a></p>
+
+</div>

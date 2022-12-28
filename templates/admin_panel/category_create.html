@@ -1,0 +1,60 @@
+{% extends "admin_panel/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% translate 'Create Category' %}
+{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.card-header -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h1 class="card-title">{% translate 'Create Category' %}</h1>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>{% translate 'Title: ' %}</label>
+                                    {{form.title}}
+                                </div>
+                                <div class="form-group">
+                                    <label>{% translate 'Slug: ' %}</label>
+                                    {{form.slug}}
+                                </div>
+                                <div class="form-group ">
+                                    <label>{% translate 'Parent: ' %}</label>
+                                    {{form.parent}}
+                                </div>
+                                <div class="form-group">
+                                    <label>{% translate 'Position: ' %}</label>
+                                    {{form.position}}
+                                </div>
+                                <div class="form-check">
+                                    <label style="padding-right:15px;">{% translate 'Status: ' %}</label> {{form.status}}
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success">{% translate 'Create' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+</div>
+{% endblock content %}

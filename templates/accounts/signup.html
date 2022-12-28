@@ -1,0 +1,97 @@
+{% load i18n %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'admin_panel/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'admin_panel/dist/css/adminlte.min.css' %}">
+    <title>{% translate 'Sign Up' %}</title>
+</head>
+    <body>
+        <div>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create Account</h3>
+                </div>
+                {% for err in non_field_errors %}
+                <p>{{err}}</p>
+                {% endfor %}
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="id_username">User Name</label>
+                            {{form.username}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_email">Email address</label>
+                            {{form.email}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_password1">Password</label>
+                            {{form.password1}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_password2">Confirm Password</label>
+                            {{form.password2}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_first_name">First Name</label>
+                            {{form.first_name}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_last_name">Last Name</label>
+                            {{form.last_name}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_personal_info">Bio</label>
+                            {{form.personal_info}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_phone">Telephone</label>
+                            {{form.phone}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_mobile">Mobile</label>
+                            {{form.mobile}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_home_address">Home Address</label>
+                            {{form.home_address}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_postal_code">Postal Code</label>
+                            {{form.postal_code}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_age">Age</label>
+                            {{form.age}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_gender">Gender</label>
+                            {{form.gender}}
+                        </div><hr>
+                        <div class="form-group">
+                            <label for="id_degree">Degree</label>
+                            {{form.degree}}
+                        </div><hr>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

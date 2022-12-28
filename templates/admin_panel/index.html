@@ -1,0 +1,125 @@
+{% extends "admin_panel/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Articles' %}
+{% endblock title %}
+
+{% block content %}
+    <div class="content-wrapper" style="min-height: 1302.12px;">
+        <section class="content">
+            <div class="container-fluid">
+                {% if messages %}
+                    {% for msg in messages %}
+                        <p>{{msg}}</p>
+                    {% endfor %}
+                {% endif %}
+                <!-- /.card-header -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h1 class="card-title">{% translate 'Articles' %} <span style="background-color:white;color:#007bff;padding:0 5px;border-radius:5px;font-weight:bold;">{{articles.all.count}}</span></h1>
+    
+                                <!-- <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 230px;">
+                                        <form action="{% url 'blog:panel' %}" method="get" class="input-group input-group-sm"
+                                         style="position:absolute;margin-top:0">
+                                        <input type="text" name="q" class="form-control float-right"
+                                            placeholder="Search">
+    
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>{% translate 'ID' %}</th>
+                                            <th>{% translate 'Title' %}</th>
+                                            <th>{% translate 'Slug' %}</th>
+                                            <th>{% translate 'Author' %}</th>
+                                            <th>{% translate 'Content' %}</th>
+                                            <th>{% translate 'Category' %}</th>
+                                            <th>{% translate 'Code' %}</th>
+                                            <th>{% translate 'View' %}</th>
+                                            <th>{% translate 'Status' %}</th>
+                                            <th>{% translate 'Special' %}</th>
+                                            <th>{% translate 'Publish' %}</th>
+                                            <th>{% translate 'Image' %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for article in articles %}
+                                            <tr>
+                                                <td>
+                                                    {% if user.is_superuser %}
+                                                        <a href="{% url 'blog:article_update' article.slug %}" style="text-decoration: none;"><small
+                                                                style="background-color:#007bff;color:white;font-weight:bold;padding-block: 1px;padding-inline: 6px;border-radius:4px;">{{article.id}}</small></a>
+                                                        <br>
+                                                        <a href="{% url 'blog:article_delete' article.slug %}"><span class="article_button_delete"><small>{% translate 'delete'%}</small></span></a>
+                                                        <br>
+                                                        <a href="{% url 'blog:article_preview' article.slug %}"><span class="article_button_preview"><small>{% translate 'preview' %}</small></span></a>
+                                                    {% else %}
+                                                        {% if article.status in 'db'|make_list %}
+                                                            <a href="{% url 'blog:article_update' article.slug %}" style="text-decoration: none;"><small
+                                                                    style="background-color:#007bff;color:white;font-weight:bold;padding-block:1px;padding-inline:6px;border-radius:4px;">{{article.id}}</small></a>
+                                                            <br>
+                                                            <a href="{% url 'blog:article_delete' article.slug %}"><span class="article_button_delete"><small>{% translate 'delete'%}</small></span></a>
+                                                            <br>
+                                                            <a href="{% url 'blog:article_preview' article.slug %}"><span class="article_button_preview"><small>{%translate 'preview' %}</small></span></a>
+                                                        {% else %}
+                                                            <small style="background-color:#007bff;color:white;font-weight:bold;padding-block: 1px;padding-inline: 6px;border-radius:4px;">{{article.id}}</small>
+                                                            <br>
+                                                            <a href="{% url 'blog:article_preview' article.slug %}"><span class="article_button_preview"><small>{%translate 'preview'%}</small></span></a>
+                                                        {% endif %}  
+                                                    {% endif %}
+                                                </td>
+                                                <td><small>{{article.title|truncatewords:'4'}}</small></td>
+                                                <td><small>{{article.slug}}</small></td>
+                                                <td><small>{{article.author}}</small></td>
+                                                <td><small>{{article.content|truncatechars:'45'}}</small></td>
+                                                <td class="article_td_category">
+                                                    {% for category in article.category.all %}
+                                                        <small>{{category}}</small>,
+                                                    {% endfor %}
+                                                </td>
+                                                <td><small>{{article.code}}</small></td>
+                                                <td><small>{{article.view}}</small></td>
+                                                <td><small>{{article.status_full_name}}</small></td>
+                                                <td>
+                                                    {% if article.special %}
+                                                        <span class="fa fa-check-circle text-success"
+                                                        style="font-size:medium;"></span>
+                                                    {% else %}
+                                                        <span class="fa fa-times-circle text-danger"
+                                                        style="font-size:medium;"></span>
+                                                    {% endif %}
+                                                </td>
+                                                <td><small><time>{{article.publish_time}}</time></small></td>
+                                                <td>{{article.thumbnail_tag}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.card -->
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'home' %}
+{% endblock title %}
+
+{% block content %}
+    {% for article in articles %}
+        <article class="article">
+            <div class="article_header_information">
+                <div class="title">
+                    <h2><a href="{% url 'blog:detail' article.slug %}" class="title_text">{{article.title|truncatewords:'5'}}</a>{% if article.special %}<span class="special">{% translate 'Special Article' %}</span>{% endif %}</h2>
+                </div>
+                <div class="article_detail">
+                    <div><small><time>{{article.publish|naturaltime}}</time>|{% translate 'Posted by: ' %}<a href="{% url 'blog:author_detail' article.author.username %}" class="article_title_link">{{article.author}}</a></small></div>
+                    <div><small>{% translate 'Code= ' %}<strong>{{article.code}}</strong></small></div>
+                </div>
+            </div>
+            <div class="article_body">
+                
+                {% if article.special %}
+                    <div class="article_image">
+                        <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture" style="opacity: 40%;">
+                    </div>
+                    <p>{{article.content|linebreaks|truncatewords:'40'}}</p>
+                {% else %}
+                    <div class="article_image">
+                        <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture">
+                    </div>
+                    <p>{{article.content|linebreaks|truncatewords:'60'}}</p>
+                {% endif %}
+            </div>
+            <hr>
+            <div class="article_footer">
+                <div class="article_categories">
+                    <small>{% translate 'Categories:' %}</small> 
+                    {% for category in article.category.active %}
+                    <a href="{% url 'blog:category_articles' category.slug %}" class="badge bg-dark text-light tag">{{category.title}}</a>
+                    {% endfor %}
+                </div>
+                <div class="article_views">
+                    <small>{% translate 'Views: ' %}<span class="badge bg-primary">{{article.view}}</span></small>
+                </div>
+            </div>
+        </article>
+    {% empty %}
+        <p>{% translate 'there is not any article ...' %}</p>
+    {% endfor %}
+{% endblock content %}
+
+{% block paginate %} {{ block.super }} {% endblock paginate %}

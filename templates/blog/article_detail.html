@@ -1,0 +1,145 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+
+{% block title %}
+    {{article.title}} 
+{% endblock title %}
+
+{% block content %}
+    <article class="article">
+        <div class="article_header_information">
+            <div class="title">
+                <h1><a href="#" class="title_text">{{article.title}}</a>{% if article.special %}<span class="special">{% translate 'Special Article' %}</span>{% endif %}</h1>
+            </div>
+            <div class="article_detail">
+                <div><small><time>{{article.publish|naturaltime}}</time>|{% translate 'Posted by: ' %}<a href="{% url 'blog:author_detail' article.author.username %}" class="article_title_link">{{article.author}}</a></small></div>
+                <div><small>{% translate 'Code= ' %}<strong>{{article.code}}</strong></small></div>
+            </div>
+        </div>
+        <div class="article_body">
+            {% if user.is_special_user or not article.special or article.author == user %}
+                <div class="article_image">
+                    <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture">
+                </div>
+                <p>{{article.content|linebreaks}}</p>
+            {% else %}
+                <div class="article_image_special">
+                    <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture">
+                </div>
+                <p>{{article.content|linebreaks|truncatewords:'30'}}</p>
+                <section class="special_account">
+                    <div class="special_account_header">
+                        <h5>{% translate 'This article is for special users,  Please get special account .' %}</h5>
+                    </div>
+                    <div class="special_container">
+                        <div class="purchase">
+                            <h4>{% translate 'GET ' %}<i>{% translate '1' %}</i>{% translate ' MONTH ' %}<span>{% translate '10$' %}</span></h4>
+                            <p>{% translate 'get this account to use special option and amazing articles in this site ' %}</p>
+                            <a href="">{% translate 'BUY ACCOUNT' %}</a>
+                        </div>
+                        <div class="purchase">
+                            <h4>{% translate 'GET ' %}<i>{% translate '3' %}</i>{% translate ' MONTH ' %}<span><del>{% translate '20$' %}</del>{% translate '16$' %}</span></h4>
+                            <p>{% translate 'get this account to use special option and amazing articles in this site ' %}</p>
+                            <a href="">{% translate 'BUY ACCOUNT' %}</a>
+                        </div>
+                        <div class="purchase">
+                            <h4>{% translate 'GET ' %}<i>{% translate '6' %}</i>{% translate ' MONTH ' %}<span><del>{% translate '60$' %}</del>{% translate '50$' %}</span></h4>
+                            <p>{% translate 'get this account to use special option and amazing articles in this site ' %}</p>
+                            <a href="">{% translate 'BUY ACCOUNT' %}</a>
+                        </div>
+                        <div class="purchase">
+                            <h4>{% translate 'GET ' %}<i>{% translate '1' %}</i>{% translate ' YEAR ' %}<span><del>{% translate '120$' %}</del>{% translate '95$' %}</span></h4>
+                            <p>{% translate 'get this account to use special option and amazing articles in this site ' %}</p>
+                            <a href="">{% translate 'BUY ACCOUNT' %}</a>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+            
+        </div>
+        <hr>
+        <div class="article_footer">
+            <div class="article_categories">
+                <small>{% translate 'Categories:' %}</small>
+                {% for category in article.category.active %}
+                <span class="badge bg-secondary"><a href="{% url 'blog:category_articles' category.slug %}" class="tag">{{category.title}}</a></span>
+                {% endfor %}
+            </div>
+            <div class="article_views">
+                <small>{% translate 'Views: ' %}<span class="badge bg-primary">{{article.view}}</span></small>
+            </div>
+        </div>
+    </article>
+
+    <!-- ======================== Comments ======================= -->
+    <section class="comments">
+        <div class="comments_head"><h3>{% translate 'Comments' %}</h3><span>{{article.comments.published.count}}</span></div>
+        {% if user.is_authenticated %}
+            <div class="comment_form">
+                <h3 style="text-align:center;">{% translate 'New Comment' %}</h3>
+                <form action="{% url 'comments:create' article.slug None %}" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label for="id_name">{% translate 'name :' %}</label>
+                        <input type="text" name="name" id="id_name" required maxlength="30" placeholder="{% translate 'your name' %}">
+                    </div>
+                    <div>
+                        <label for="id_text">{% translate 'text :' %}</label>
+                        <textarea name="text" id="id_text" required maxlength="300" cols="60" rows="13"></textarea>
+                    </div>
+                    <input type="submit" value="{% translate 'Send' %}" class="send_button">
+                </form>
+            </div>
+        {% else %}
+            <div class="comment_form">
+                <p style="text-align: center;">{% translate 'please ' %}<a href="{% url 'accounts:login' %}" target="_blank">{% translate ' login ' %}</a>{% translate ' for joining discussion and add your comment.' %}</p>
+            </div>
+        {% endif %}
+        
+        {% if article.comments.parents %}
+            {% for comment in article.comments.parents %}
+                <div class="published_comments">
+                    <div class="comment_vote"><p class="bottom-l"><small>{% translate 'agree = ' %}{{comment.agree}}</small></p><p class="bottom-r"><small>{% translate 'disagree = ' %}{{comment.disagree}}</small></p></div>
+                    <div class="comment_detail"><p class="top-l"><small>{{comment.name}}</small></p><p class="top-r"><time><small>{{comment.publish}}</small></time></p></div>
+                    <!-- <div id="send_button">
+                        <button onclick="show()">{% translate 'Reply' %}</button>
+                    </div> -->
+                    <div class="reply_form" id="reply_form">
+                        <form action="{% url 'comments:create' article.slug comment.name %}" method="post">
+                            {% csrf_token %}
+                            <div>
+                                <label for="id_name">{% translate 'name :' %}</label>
+                                <input type="text" name="name" id="id_name" required maxlength="30" placeholder="{% translate 'your name' %}">
+                            </div>
+                            <div>
+                                <label for="id_text">{% translate 'text :' %}</label>
+                                <textarea name="text" id="id_text" required maxlength="300" cols="60" rows="13"></textarea>
+                            </div>
+                            <input type="submit" value="{% translate 'Send' %}" class="send_button">
+                        </form>
+                    </div>
+                        <p>{{comment.text}}</p>
+                        {% if comment.replies.published %}
+                            {%for reply in comment.replies.published%}
+                                <div class="published_replies">
+                                    <div class="comment_vote">
+                                        <p class="bottom-l"><small>{% translate 'agree = ' %}{{reply.agree}}</small></p>
+                                        <p class="bottom-r"><small>{% translate 'disagree = ' %}{{reply.disagree}}</small></p>
+                                    </div>
+                                    <div class="comment_detail">
+                                        <p class="top-l"><small>{{reply.name}}</small></p>
+                                        <p class="top-r"><time><small>{{reply.publish}}</small></time></p>
+                                    </div>
+                                    <p class="reply_p">{{reply.text}}</p>
+                                </div>
+                            {%endfor%}
+                        {% endif %}
+                </div>
+            {% empty %}
+               <p>{% translate 'there is not any comment yet ...' %}</p> 
+            {% endfor %}              
+        {% endif %}
+    </section>
+{% endblock content %}

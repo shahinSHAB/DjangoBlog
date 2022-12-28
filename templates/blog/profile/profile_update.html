@@ -1,0 +1,78 @@
+{% extends "blog/profile/profile.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'update profile' %}
+{% endblock title %}
+
+{% block content %}
+<div>
+    <section class="content">
+        <div>
+            <!-- /.card-header -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- general form elements -->
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h1 class="card-title">{% translate 'Update Profile' %}</h1>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Username :' %}</label> {{form.username}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Email :' %}</label> {{form.email}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Name :' %}</label> {{form.first_name}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Family :' %}</label> {{form.last_name}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Telephone :' %}</label> {{form.phone}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Mobile :' %}</label> {{form.mobile}}
+                                </div>
+                                <div class="form-group col-12">
+                                    <label>{% translate 'Bio :' %}</label> {{form.personal_info}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Address :' %}</label> {{form.home_address}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Postal Code :' %}</label> {{form.postal_code}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Age :' %}</label> {{form.age}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Gender :' %}</label> {{form.gender}}
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>{% translate 'Degree :' %}</label> {{form.degree}}
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-warning">{% translate 'Update' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.card -->
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+</div>
+{% endblock content %}

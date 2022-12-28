@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate 'activation account' %}</title>
+</head>
+<body>
+    <h3>{% translate 'Thank You for registering in our site.' %}</h3>
+    <p>{% translate "this email was sended because of your signup. if you didn't signup ignore it." %}</p>
+    <p><a href="http://{{domain}}{% url 'accounts:account_activation' uidb64=uidb64 token=token %}">please click on this link for activate your account. </a></p> 
+</body>
+</html>

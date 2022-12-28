@@ -1,0 +1,17 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% translate 'delete comment' %}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <h2>{% translate 'are you sure to delete ' %}{{comment.text}}{% translate ' ?' %}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="delete">
+        <a href="{% url 'comments:article_comments' article.slug %}">{% translate 'back' %}</a>
+    </form>
+</main>
+{% endblock content %}

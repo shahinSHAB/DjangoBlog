@@ -1,0 +1,29 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% translate 'detail comment' %}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <p>{% translate 'name : ' %}{{comment.name}}</p>
+    <p>{% translate 'text : ' %}{{comment.text}}</p>
+    <p>{% translate 'status : ' %}{{comment.status}}</p>
+    <p>{% translate 'author : ' %}{{comment.author}}</p>
+    <p>{% translate 'article : ' %}{{comment.article.slug}}</p>
+    <p>{% translate 'agree : ' %}{{comment.agree}}</p>
+    <p>{% translate 'disagree : ' %}{{comment.disagree}}</p>
+    <p>{% translate 'publish : ' %}{{comment.publish}}</p>
+    <p>{% translate 'reply : ' %}{{comment.reply}}</p>
+    {% if comment.replies %}
+        <p>{% translate 'replies : ' %}{{comment.replies.count}}</p>
+    {%else%}
+        <p>{% translate 'There is no reply yet ...' %}</p>
+    {% endif %}
+    <div>
+        <a href="{% url 'comments:update' article.slug comment.pk %}"><button>{% translate 'update' %}</button></a>
+        <a href="{% url 'comments:delete' article.slug comment.pk %}"><button>{% translate 'delete' %}</button></a>
+    </div>
+</main>
+{% endblock content %}

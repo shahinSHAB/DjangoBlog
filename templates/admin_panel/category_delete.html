@@ -1,0 +1,44 @@
+{% extends "admin_panel/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% translate 'Delete Category' %}
+{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.card-header -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- general form elements -->
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h1 class="card-title">{% translate 'Delete Category' %}</h1>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="card-body text-center">
+                                <p class="display-4">{% translate 'Are you sure you want to delete ' %}"{{object.title}}"{% translate ' ?' %}</p>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-danger">{% translate 'Delete' %}</button>
+                                <a href="{% url 'blog:panel' %}" class="btn btn-primary">{% translate 'Cancel' %}</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.card -->
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+</div>
+{% endblock content %}

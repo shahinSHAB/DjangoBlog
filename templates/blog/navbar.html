@@ -1,0 +1,36 @@
+{% load extra_tags %}
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{% translate 'Navbar' %}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'blog:articles' %}">{% translate 'Home' %}</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog:profile_detail'%}">{% translate 'Profile' %}</a>
+        </li>
+          <li class="nav-item">{% translate 'welcome ' %} {{user.username}}
+            <a class="nav-link" href="{% url 'accounts:logout' %}">{% translate ' Logout' %}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">{% translate 'Login' %}</a>
+          </li>
+        {% endif %}
+        {% nav_items %}
+      </ul>
+    </div>
+    <form class="d-flex" role="search" method="get">
+      <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light" type="submit">{% translate 'Search' %}</button>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,125 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Bootstrap V=5.2 CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- font awesome 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- static files -->
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_panel/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'admin_panel/dist/css/adminlte.min.css' %}">
+    <title>{% block title %}{% translate 'profile' %}{% endblock title %}</title>
+    <style>
+        li{
+            padding: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- head -->
+        <header id="head">
+            {% include 'blog/navbar.html' %}
+            {% if messages %}
+            <section class="message">
+                {% for msg in messages %}
+                    <p>{{msg}}</p>
+                {% endfor %}
+            </section>
+            {% endif %}
+            <div class="poster">
+                <h1 class="poster_context">{% translate 'Any Blog' %}</h1>
+            </div>
+        </header>
+        <!-- content -->
+        <div class="content">
+            <main>
+                {% block content %}
+                    <div class="mx-auto">
+                        <!-- Widget: user widget style 2 -->
+                        <div class="card card-widget widget-user-2">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-warning">
+                                <div class="widget-user-image">
+                                    <img class="img-circle elevation-2" src="{% static 'blog/avatar/IMG_20200922_083450_620.jpg' %}" alt="User Avatar">
+                                </div>
+                                <!-- /.widget-user-image -->
+                                <h3 class="widget-user-username">{{user.username}}</h3>
+                                <h5 class="widget-user-desc">{{user.degree}}</h5>
+                            </div>
+                            <div class="card-footer p-0">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Name : </span> {{user.first_name}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Family : </span> {{user.last_name}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Email : </span> {{user.email}}
+                                        <a href="{% url 'accounts:change_password' %}" class="nav-link float-right">
+                                            <button>{% translate 'Change Password' %}</button>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Bio : </span> {{user.personal_info}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Telephone : </span> {{user.phone}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Phone : </span> {{user.mobile}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Postal-Code : </span> {{user.postal_code}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Address : </span> {{user.home_address}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Age : </span> {{user.age}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <span style="font-size:medium;font-weight:bold;">Gender : </span> {{user.gender_full_name}}
+                                    </li>
+                                    <li class="nav-item">   
+                                        <a href="{% url 'blog:profile_update' %}"><button>{% translate 'Edit Profile' %}</button></a>
+                                    </li>
+                                    <!-- <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            Followers <span class="float-right badge bg-danger">842</span>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                {% endblock content %}
+            </main>
+        </div>
+        <!-- footer -->
+        {% include 'blog/footer.html' %}
+    </div>
+    
+</body>
+
+<!-- JavaScript Bundle with Popper for Bootstrap V=5.2 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+</html>
+
+

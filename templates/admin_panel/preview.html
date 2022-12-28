@@ -1,0 +1,75 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Bootstrap V=5.2 CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- font awesome 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- static files -->
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    <title>{{article.title}} {% translate 'preview' %}</title>
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- head -->
+        <header id="head">
+            {% include 'blog/navbar.html' %}
+            <div class="poster">
+                <h1 class="poster_context">{% translate 'Article Preview' %}</h1>
+            </div>
+        </header>
+        <!-- content -->
+        <div class="content">
+            <main>
+                <article class="article">
+                    <div class="article_header_information">
+                        <div class="title">
+                            <h1><a href="#" class="title_text">{{article.title}}</a></h1>
+                        </div>
+                        <div class="article_detail">
+                            <div><small><time>{{article.publish_time}}</time>|{% translate 'Posted by: ' %}<a href="#"
+                                        class="article_title_link">{{article.author}}</a></small></div>
+                            <div><small>{% translate 'Code= ' %}<strong>{{article.code}}</strong></small></div>
+                        </div>
+                    </div>
+                    <div class="article_body">
+                        <div class="article_image">
+                            <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture">
+                        </div>
+                        <p>{{article.content|linebreaks}}</p>
+                    </div>
+                    <hr>
+                    <div class="article_footer">
+                        <div class="article_categories">
+                            <small>{% translate 'Categories:' %}</small>
+                            {% for category in article.category.active %}
+                            <span class="badge bg-secondary"><a href="#" class="tag">{{category.title}}</a></span>
+                            {% endfor %}
+                        </div>
+                        <div class="article_views">
+                            <small>{% translate 'Views: ' %}<span class="badge bg-primary">{{article.view}}</span></small>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+        <!-- footer -->
+        {% include 'blog/footer.html' %}
+    </div>
+</body>
+
+<!-- JavaScript Bundle with Popper for Bootstrap V=5.2 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+</html>

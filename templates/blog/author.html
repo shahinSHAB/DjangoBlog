@@ -1,0 +1,37 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {{author.username}} {% translate 'detail' %}
+{% endblock title %}
+
+{% block content %}
+    <header class="author_header">
+        <section class="author_avatar">
+        <img src="{% static 'blog/avatar/IMG_20200922_083450_620.jpg' %}" alt="{{author.username}} picture">
+        </section>
+        <section class="author_detail">
+            <div><p>{% translate 'username : ' %}</p><small> {{author.username}}</small></div>
+            <div><p>{% translate 'first_name : ' %}</p><small> {{author.first_name}}</small></div>
+            <div><p>{% translate 'age : ' %}</p><small> {{author.age}}</small></div>
+            <div><p>{% translate 'degree : ' %}</p><small> {{author.degree}}</small></div>
+            <div><p>{% translate 'personal_info : ' %}</p><small> {{author.personal_info}}</small></div>
+        </section>
+    </header>
+    <h3 class="author_article_head">{% translate 'articles' %}</h3>
+    <section class="author_article">
+        {% for article in articles %}
+        <a href="{% url 'blog:detail' article.slug %}" class="article_link">
+            <article class="article">
+                <p>{{article.title|truncatewords:'5'}}{% if article.special %}<span class="special">{% translate 'Special Article' %}</span>{% endif %}</p>
+                {% if article.special %}
+                    <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture" class="article_img">
+                {% else %}
+                    <img src="{{article.thumbnail.url}}" alt="{{article.title}} picture">
+                {% endif %}
+            </article>
+        </a>
+        {% endfor %}
+    </section>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login/css/Login.css' %}">
+    <title>{% translate 'login' %}</title>
+</head>
+<body>
+    {% if messages %}
+    <section class="message">
+        {% for msg in messages %}
+        {{msg}}
+        {% endfor %}
+    </section>
+    {% endif %}
+    <section class="form" style="position:relative;">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h4><span>Login</span> Your Account</h4>
+            {{form.username}}
+            {{form.password}}
+            <input type="submit" value="{% translate 'Login' %}" class="button">
+        </form>
+        <a href="{% url 'accounts:reset_password' %}">{% translate 'Forgot password?' %}</a>
+        <a href="{% url 'accounts:register' %}" class="a_blue">{% translate 'Create account' %}</a>
+    </section>
+</body>
+</html>

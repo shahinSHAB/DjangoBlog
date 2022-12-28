@@ -1,0 +1,19 @@
+{% load static %}
+{% load i18n %}
+
+{% if is_paginated %}
+    <section class="paginate_buttons">
+        {% if page_obj.has_previous %}
+            <div class="paginate_button">
+                <a href="{% url 'blog:articles' page_obj.previous_page_number %}"><span>&loarr; </span>{% translate ' Newer Articles' %}</a>
+            </div>
+            <div class="paginate_button"></div>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <div class="paginate_button"></div>
+            <div class="paginate_button">
+                <a href="{% url 'blog:articles' page_obj.next_page_number %}">{% translate 'Older Articles ' %}<span> &roarr;</span></a>
+            </div>
+        {% endif %}               
+    </section>
+{% endif %}

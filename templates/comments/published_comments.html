@@ -1,0 +1,28 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% translate 'published comments' %}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <main>
+    
+        {% for comment in comments %}
+        <div>
+            <p>
+                {{comment.name}}
+            </p>
+            <p>
+                <a href="{% url 'comments:detail' article.slug comment.pk %}">{{comment.text}}</a>
+            </p>
+            <p>
+                {{comment.status}}
+            </p>
+        </div>
+        <hr>
+        {% endfor %}
+    </main>
+</main>
+{% endblock content %}
