@@ -16,15 +16,16 @@ EMAIL_HOST_PASSWORD = 'your_app_secure_pass'
 # =========== Static Files Directory ==============
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'assets',
+    BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # ================= Database ====================
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.dj_db_url('DATABASE_URL')
 }
+
+MIDDLEWARE.insert(2,"whitenoise.middleware.WhiteNoiseMiddleware")
+INSTALLED_APPS.insert(5, 'whitenoise.runserver_nostatic')
