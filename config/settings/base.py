@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # third_party
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
     # 'rest_framework.authtoken',
     # 'allauth',
     # 'allauth.account',
@@ -158,6 +159,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     # 'rest_framework.authentication.TokenAuthentication',
@@ -180,5 +182,17 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 )
+
 # ====================== CSRF_TRUSTED_ORIGIN ===========================
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+
+# ===================== SPECTACULAR_SETTINGS ===========================
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'DJANGO BLOG API Project',
+    'DESCRIPTION': 'A simple blog like news blog with few features',
+    'VERSION': '1.0.0',
+    'CONTACT': {
+        'name':'shahin asadi',
+        'email':'shahin.asadi.95@gmail.com'
+    }
+}
