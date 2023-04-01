@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # third_party
     'rest_framework',
+    'corsheaders',
     # 'rest_framework.authtoken',
     # 'allauth',
     # 'allauth.account',
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Add
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -172,3 +174,11 @@ REST_FRAMEWORK = {
 # REST_USE_JWT = True
 # JWT_AUTH_COOKIE = 'access'
 # JWT_AUTH_REFRESH_COOKIE = 'refresh'
+
+# ====================== CORS_ORIGIN_ALLOWED ==========================
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+)
+# ====================== CSRF_TRUSTED_ORIGIN ===========================
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
