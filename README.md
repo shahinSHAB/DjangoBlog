@@ -20,16 +20,16 @@ pip install -r requirements.txt
 ## Run server
 for running server you prompt like below caus of settings is modified :
 
-for run project in local :
+for run project in **local** :
 
 ```cmd
 py manage.py runserver --settings=config.local
 ```
-and run project in product :
+and run project in **product** :
 ```cmd
 py manage.py runserver --settings=config.product
 ```
-#####* tip
+##### * tip
 you can continue and prompt like always and its working and run local server itself 
 ```cms
 # this prompt work without error
@@ -40,28 +40,28 @@ py manage.py runserver
 ## endpoints
 in this project you can see endpoint with redoc, awagger and just simple schema.yml file
 
-##### 1- schema
+##### 1- **schema**
 you must go to http://localhost:port/api/schema/
 `http://localhost:port/api/schema
 `
 *if you get this endpoint its automatically create an update schema.yml to download*
-##### 2- Reduc
+##### 2- **Reduc**
 you must go to http://localhost:port/api/reduc/
 `http://localhost:port/api/reduc
 `
-##### 3- Swagger-ui
+##### 3- **Swagger-ui**
 you must go to http://localhost:port/api/swagger-ui/
 `http://localhost:port/api/swagger-ui
 `
 
-##.env
+## .env
 **dont forget to create .env file in your project root and define variables**
 ```.env
 SECRET_KEY = your secret key
 DATATBASE_URL = sqlite:///db.sqlite3 (or your another database that you connect in your local state project)
 DEBUG = True
 ```
-#####* tip
+##### * tip
 remember that you must create new secret key and keep secure that(for some reasons like if you use git)
 one simple way is using python built-in module like secrets like :
 ```cmd
