@@ -4,7 +4,7 @@
 ## virtual environment
 for create virtual environment you have many choices. for example you can use *virtualenv* package
 ```cmd
-# get vertualenv package and create a virtual environment
+# get virtualenv package and create a virtual environment
 py -m pip install virtualenv
 ```
 ```cmd
