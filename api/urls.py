@@ -32,4 +32,5 @@ urlpatterns = [
     path('v1/comments/<slug:slug>/create/', views.CommentCreateApiView.as_view(), name='comment_create'),
     path('v1/comments/<slug:slug>/<int:pk>/update/', views.CommentUpdateApiView.as_view(), name='comment_update'),
     path('v1/comments/<slug:slug>/<int:pk>/delete/', views.CommentDeleteApiView.as_view(), name='comment_delete'),
+    path('v1/articles/<slug:slug>/share/', views.SharePostApiView.as_view(), name='share_article'),
 ]

@@ -113,4 +113,12 @@ class CommentModelSerializer(serializers.ModelSerializer):
             'agree',
             'disagree',
             'updated',
-        )  
+        )
+
+
+# ================= Share Post Serializer =====================
+class SharePostSerializer(serializers.Serializer):
+    name = serializers.CharField(allow_blank=True, max_length=100,
+                                 style={'base_html': 'textarea.html'})
+    email = serializers.EmailField(max_length=100)
+    message = serializers.CharField(allow_blank=True, max_length=400)

@@ -4,10 +4,14 @@ from django.db.models import Q
 from django.utils import timezone
 from datetime import timedelta
 from django.http import Http404
+from django.urls import reverse_lazy
+from django.core.mail import send_mail
 # from django.urls import reverse_lazy
 
 from rest_framework.viewsets import ModelViewSet
+from rest_framework import status
 from rest_framework import generics
+from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from blog.models import Blog, Category
@@ -25,7 +29,8 @@ from .serializers import (
     UserSerializer,
     BlogModelSerializer,
     CategoryModelSerializer,
-    CommentModelSerializer
+    CommentModelSerializer,
+    SharePostSerializer
 )
 
 
@@ -269,5 +274,36 @@ class CommentDeleteApiView(generics.RetrieveDestroyAPIView):
     serializer_class = CommentModelSerializer
     permission_classes = (IsAuthenticated, IsSuperUserOrStaff)
     lookup_field = 'pk'
-    
-    
+
+
+# =================== Share Post Api View =====================
+class SharePostApiView(generics.GenericAPIView):
+    queryset = Blog.objects.published()
+    serializer_class = SharePostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        obj_slug = self.kwargs.get('slug')
+        obj = self.get_queryset().get(slug=obj_slug)
+        return obj
+
+    def get(self, *args, **kwargs):
+        serialize = BlogModelSerializer(self.get_object())
+        return Response(serialize.data)
+
+    def post(self, *args, **kwargs):
+        serializer_obj = self.serializer_class(data=self.request.data)
+        obj = self.get_object()
+        if serializer_obj.is_valid():
+            vd = serializer_obj.validated_data
+            obj_path = self.request.build_absolute_uri(reverse_lazy(
+                'api:article_detail', kwargs={'slug': obj.slug}))
+            subject = f'Article {obj.title}'
+            f_email = 'someaccount@gamil.com'
+            message = f"hi {vd['name']}. user {self.request.user.username} \
+                send to this email. \nlink is : {obj_path} \n {vd['message']}"
+            send_mail(subject, message, f_email, [vd['email']])
+            return Response(data={'message': 'post shared successfully'},
+                            status=status.HTTP_200_OK)
+        return Response(data={'message': serializer_obj.errors},
+                        status=status.HTTP_400_BAD_REQUEST)
