@@ -80,7 +80,7 @@ class ProfileForm(forms.ModelForm):
             self.fields['username'].disabled = True
             self.fields['email'].disabled = True
             self.fields['phone'].disabled = True
-    
+
     class Meta:
         model = CustomUser
         fields = (
@@ -97,4 +97,9 @@ class ProfileForm(forms.ModelForm):
             'gender',
             'degree',
         )
-        
+
+
+class SharePostForm(forms.Form):
+    name = forms.CharField(max_length=150, required=False, empty_value='')
+    email = forms.EmailField(max_length=250)
+    message = forms.CharField(widget=forms.Textarea, empty_value='', required=False)

@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div>
+        <form actiom='' method='post'>
+            {% csrf_token %}
+            {{form.errors}}
+            person name: {{form.name}}<br/>
+            person email: {{form.email}}<br/>
+            Message: {{form.message}}<br/>
+            <input type='submit' value='Share post'/>
+        </form>
+    </div>
+{% endblock content %}

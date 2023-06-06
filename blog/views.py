@@ -1,3 +1,5 @@
+from typing import Any
+from django.db import models
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -9,9 +11,10 @@ from django.utils import timezone
 from datetime import timedelta
 from django.contrib.auth import get_user_model
 from django.utils.translation import activate
+from django.core.mail import send_mail
 
 from .models import Blog, Category
-from .forms import BLogForm, CategoryForm, ProfileForm
+from .forms import BLogForm, CategoryForm, ProfileForm, SharePostForm
 from . import mixins
 
 
@@ -305,8 +308,42 @@ class ArticlePreView(LoginRequiredMixin, mixins.SuperUserOrOwnerAccessMixin, gen
     model = Blog
     template_name = 'admin_panel/preview.html'
     context_object_name = 'article'
-    
-    
+
+
+# ============================= Share Post View ===========================
+class SharePostView(LoginRequiredMixin, SuccessMessageMixin, generic.FormView, generic.DetailView):
+    form_class = SharePostForm
+    success_message = 'post successfully shared'
+    template_name = 'blog/share_post.html'
+
+    def get_queryset(self):
+        return Blog.objects.published()
+
+    def get_object(self):
+        obj = self.get_queryset().get(slug=self.kwargs.get('slug'))
+        return obj
+
+    def get_success_url(self):
+        slug = self.get_object().slug
+        return reverse_lazy('blog:detail', kwargs={'slug':slug})
+
+    def form_valid(self, form):
+        cd = form.cleaned_data
+        user_message = cd['message']
+        to_email = cd['email']
+        obj = self.get_object()
+        obj_url = self.request.build_absolute_uri(reverse_lazy('blog:detail',
+                                                    kwargs={'slug':obj.slug})
+                                                )
+        user_name = self.request.user.username
+        subject = f'Blog {obj.title}'
+        message = f'user {user_name} send this mail for you: \n \
+                    link of post is : {obj_url} \n {user_message}'
+        from_ = 'someaccount@gmail.com'
+        send_mail(subject, message, from_, [to_email])
+        return super().form_valid(form)
+
+
 # ============ Change Language ==============
 # class ChangeLanguageView(generic.RedirectView):
     

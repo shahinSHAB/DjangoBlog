@@ -28,5 +28,6 @@ urlpatterns = [
     path('panel/category/create/', views.CategoryCreateView.as_view(),name='category_create'),
     path('panel/category/update/<slug:slug>/', views.CategoryUpdateView.as_view(),name='category_update'),
     path('panel/category/delete/<slug:slug>/', views.CategoryDeleteView.as_view(),name='category_delete'),
+    path('<slug:slug>/share/', views.SharePostView.as_view(), name='share_article'),
 #     path('change-lang/', views.ChangeLanguageView.as_view(),name='change_language'),
 ]
