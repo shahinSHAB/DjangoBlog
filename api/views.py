@@ -252,8 +252,8 @@ class CommentDetailApiView(generics.RetrieveAPIView):
     serializer_class = CommentModelSerializer
     permission_classes = (IsAuthenticated, IsSuperUserOrStaff)
     lookup_field = 'pk'
-    
-    
+
+
 # ================== Comment Create Api View =================
 class CommentCreateApiView(generics.CreateAPIView):
     queryset = Comment.objects.all()
@@ -271,8 +271,8 @@ class CommentUpdateApiView(generics.RetrieveUpdateAPIView):
     serializer_class = CommentModelSerializer
     permission_classes = (IsAuthenticated, IsSuperUserOrStaff)
     lookup_field = 'pk'
-    
-    
+
+
 # ================== Comment Delete Api View =================
 class CommentDeleteApiView(generics.RetrieveDestroyAPIView):
     queryset = Comment.objects.all()

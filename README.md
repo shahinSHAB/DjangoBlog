@@ -1,10 +1,11 @@
+
 # Simple Django Blog
 
 
 ## virtual environment
 for create virtual environment you have many choices. for example you can use *virtualenv* package
 ```cmd
-# get vertualenv package and create a virtual environment
+# get virtualenv package and create a virtual environment
 py -m pip install virtualenv
 ```
 ```cmd
@@ -81,3 +82,4 @@ for using it you must first install it and prompt in terminal and create procfil
 #procfile
 web: gunicorn (yourdjango_project).wsgi --log-file -
 ```
+>>>>>>> 8f98535da0774193059d2ed9629ece6534bc89f8
