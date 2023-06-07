@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from rest_framework import serializers
 
@@ -99,6 +100,25 @@ class BlogModelSerializer(serializers.ModelSerializer):
 
 # ============ Comment Model Serializer ==============
 class CommentModelSerializer(serializers.ModelSerializer):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        request = self.context.pop('request')
+        obj_slug = self.context['view'].kwargs.get('slug')
+        article = Blog.objects.get(slug=obj_slug)
+        self.fields['publish'].initial = timezone.now()
+        self.fields['author'].initial = request.user.id
+        self.fields['article'].initial = article.id
+        if not request.user.is_superuser:
+            self.fields['publish'].read_only = True
+            self.fields['agree'].read_only = True
+            self.fields['disagree'].read_only = True
+            self.fields['updated'].read_only = True
+            self.fields['author'].read_only = True
+            self.fields['article'].read_only = True
+            self.fields['reply'].read_only = True
+            self.fields['status'].read_only = True
+
     class Meta:
         model = Comment
         fields = (

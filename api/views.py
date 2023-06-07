@@ -258,8 +258,13 @@ class CommentDetailApiView(generics.RetrieveAPIView):
 class CommentCreateApiView(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentModelSerializer
-    
-    
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context
+
+
 # ================== Comment Update Api View =================
 class CommentUpdateApiView(generics.RetrieveUpdateAPIView):
     queryset = Comment.objects.all()
