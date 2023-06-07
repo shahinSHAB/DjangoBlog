@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',    # add 
-    # 'django.contrib.sites',     # add because of using dj_rest_framework authentication
+    'django.contrib.sites',     # add because of using dj_rest_framework authentication and sitemaps
+    'django.contrib.sitemaps',
 
     # third_party
     'rest_framework',
@@ -72,7 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     # Custom Middleware
     'blog.middleware.SaveIpAddressMiddleware',
 ]
@@ -170,7 +171,7 @@ REST_FRAMEWORK = {
 }
 
 # ================== django_contrib.Sites ===================
-# SITE_ID = 1
+SITE_ID = 1
 
 # ======== Customize dj_rest_framework for using of jwt_authentication =========
 # REST_USE_JWT = True

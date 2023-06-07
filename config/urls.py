@@ -22,6 +22,16 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView
     )
+from django.contrib.sitemaps.views import sitemap
+
+from blog.sitemaps import PostSitemap
+from blog.models import Blog
+
+
+info_dict = {
+    'date_field': 'updated',
+    'queryset': Blog.objects.published()
+}
 
 
 urlpatterns = [
@@ -37,6 +47,9 @@ urlpatterns = [
         name='redoc'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name = 'schema'),
         name='swagger-ui'),
+    path('sitemap.xml', sitemap, {'sitemaps':{'blog': PostSitemap(
+        info_dict=info_dict)}},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 # ================ Media and Static directory in development ==================
