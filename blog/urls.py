@@ -1,11 +1,13 @@
 from django.urls import path
 
 from . import views
+from .feeds import LatestPostFeed
 
 
 app_name = 'blog'
 urlpatterns = [
     path('', views.ArticleListView.as_view(), name='articles'),
+    path('feed/', LatestPostFeed(), name='blog_feed'),
     path('<int:page>/', views.ArticleListView.as_view(), name='articles'),
     path('<slug:slug>/', views.ArticleDetailView.as_view(), name='detail'),
     path('author/<str:username>/', views.AuthorInformationView.as_view(), name='author_detail'),
