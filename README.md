@@ -82,4 +82,4 @@ for using it you must first install it and prompt in terminal and create procfil
 #procfile
 web: gunicorn (yourdjango_project).wsgi --log-file -
 ```
->>>>>>> 8f98535da0774193059d2ed9629ece6534bc89f8
+
