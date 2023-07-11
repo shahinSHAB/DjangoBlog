@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomUserManager(UserManager):
@@ -27,21 +28,21 @@ class CustomUser(AbstractUser):
     MALE = 'm'
     FEMALE = 'f'
     CHOICES = (
-        (UNKNOWN, 'unknown'),
-        (MALE, 'male'),
-        (FEMALE, 'female'),
+        (UNKNOWN, _('unknown')),
+        (MALE, _('male')),
+        (FEMALE, _('female')),
     )
-    is_author = models.BooleanField(default=False)
-    special_user = models.DateTimeField(default=timezone.now)
-    email = models.EmailField(unique=True)
-    personal_info = models.TextField(max_length=700, blank=True, default='')
-    phone = models.CharField(max_length=20, blank=True, default='00-000-0000')
-    mobile = models.CharField(max_length=20, blank=True, default='0935-648-7252')
-    home_address = models.TextField(blank=True,max_length=400, default='')
-    postal_code = models.SlugField(blank=True, default='94-188-54587')
-    age = models.PositiveSmallIntegerField(blank=True, default=0)
-    gender = models.CharField(max_length=1, choices=CHOICES, default=UNKNOWN, blank=True)
-    degree = models.CharField(max_length=20, blank=True, default='')
+    is_author = models.BooleanField(_('is_author'), default=False)
+    special_user = models.DateTimeField(_('special user'), default=timezone.now)
+    email = models.EmailField(_('email'), unique=True)
+    personal_info = models.TextField(_('personal info'), max_length=700, blank=True, default='')
+    phone = models.CharField(_('phone'), max_length=20, blank=True, default='00-000-0000')
+    mobile = models.CharField(_('mobile'), max_length=20, blank=True, default='0935-648-7252')
+    home_address = models.TextField(_('home address'), blank=True,max_length=400, default='')
+    postal_code = models.SlugField(_('postal code'), blank=True, default='94-188-54587')
+    age = models.PositiveSmallIntegerField(_('age'), blank=True, default=0)
+    gender = models.CharField(_('gender'), max_length=1, choices=CHOICES, default=UNKNOWN, blank=True)
+    degree = models.CharField(_('degree'), max_length=20, blank=True, default='')
     
     objects = CustomUserManager()
     

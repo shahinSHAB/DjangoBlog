@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator
 from django.utils import timezone
 from django.utils.html import format_html
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import CustomUser
 
@@ -23,10 +24,11 @@ class CategoryManager(models.Manager):
 
 # ========= IpAddress Model =============
 class IpAddress(models.Model):
-    ip_address = models.GenericIPAddressField()
+    ip_address = models.GenericIPAddressField(_('IP Address'))
 
     class Meta:
-        verbose_name_plural = 'ips'
+        verbose_name = _('ip')
+        verbose_name_plural = _('ips')
 
     def __str__(self):
         return self.ip_address
@@ -34,8 +36,8 @@ class IpAddress(models.Model):
 
 # ========= Category Model =============
 class Category(models.Model):
-    title = models.CharField(max_length=150,)
-    slug = models.SlugField(unique=True)
+    title = models.CharField(_('title'), max_length=150,)
+    slug = models.SlugField(_('slug'), unique=True)
     parent = models.ForeignKey(
         'self',
         on_delete=models.CASCADE,
@@ -43,19 +45,22 @@ class Category(models.Model):
         blank=True,
         null=True,
         default=None,
+        verbose_name=_('parent'),
     )
     position = models.PositiveSmallIntegerField(
+        _('position'),
         unique=True,
         validators=[MinValueValidator(1)],
     )
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(_('status'), default=False)
 
     # Custom manager
     objects = CategoryManager()
 
     class Meta:
         ordering = ['parent__id', 'position']
-        verbose_name_plural = 'categories'
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
 
     def __str__(self):
         return self.title
@@ -68,27 +73,30 @@ class Blog(models.Model):
     INVESTIGATION = 'i'
     BACK = 'b'
     CHOICES = (
-        (DRAFT, 'draft'),
-        (PUBLISH, 'publish'),
-        (INVESTIGATION, 'investigation'),
-        (BACK, 'back'),
+        (DRAFT, _('draft')),
+        (PUBLISH, _('publish')),
+        (INVESTIGATION, _('investigation')),
+        (BACK, _('back')),
     )
-    title = models.CharField(max_length=150,)
-    slug = models.SlugField(unique=True)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    content = models.TextField()
-    category = models.ManyToManyField(Category)
+    title = models.CharField(_('title'), max_length=150,)
+    slug = models.SlugField(_('slug'), unique=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE,
+                               verbose_name=_('author'))
+    content = models.TextField(_('content'))
+    category = models.ManyToManyField(Category, verbose_name=_('category'))
     code = models.PositiveIntegerField(
+        _('code'),
         unique=True,
         validators=[MinValueValidator(10000), ],
         help_text='please enter five digit number or more'
     )
-    view = models.PositiveIntegerField(default=0)
-    hits = models.ManyToManyField(IpAddress,related_name='hits',blank=True,through='ArticleView')
-    thumbnail = models.ImageField(upload_to='images')
-    publish = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=1, choices=CHOICES, default=DRAFT)
-    special = models.BooleanField(default=False)
+    view = models.PositiveIntegerField(_('view'), default=0)
+    hits = models.ManyToManyField(IpAddress,related_name='hits',blank=True,
+                                  through='ArticleView', verbose_name=_('hits'))
+    thumbnail = models.ImageField(_('thumbnail'), upload_to='images')
+    publish = models.DateTimeField(_('publish'), default=timezone.now)
+    status = models.CharField(_('status'), max_length=1, choices=CHOICES, default=DRAFT)
+    special = models.BooleanField(_('special'), default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -96,6 +104,8 @@ class Blog(models.Model):
     objects = BlogManager()
 
     class Meta:
+        verbose_name = _('blog')
+        verbose_name_plural = _('blogs')
         ordering = ['-publish', '-status', 'title']
 
     def get_absolute_url(self):
@@ -126,6 +136,6 @@ class Blog(models.Model):
 
 # =========== ArticleView Through Model =============
 class ArticleView(models.Model):
-    articles = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    ip_address = models.ForeignKey(IpAddress, on_delete=models.CASCADE)
+    articles = models.ForeignKey(Blog, on_delete=models.CASCADE, verbose_name=_('articles'))
+    ip_address = models.ForeignKey(IpAddress, on_delete=models.CASCADE, verbose_name=_('ip address'))
     created = models.DateTimeField(auto_now_add=True)

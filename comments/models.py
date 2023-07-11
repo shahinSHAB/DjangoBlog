@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 from config.settings.base import AUTH_USER_MODEL
 from blog.models import Blog
@@ -18,15 +19,17 @@ class CommentManager(models.Manager):
 
 # =========== Comment Model ============
 class Comment(models.Model):
-    name = models.CharField(max_length=30, unique=True)
-    text = models.TextField(max_length=300)
-    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
-    article = models.ForeignKey(Blog, on_delete=models.CASCADE, blank=True, null=True, default=None , related_name='comments')
-    status = models.BooleanField(default=False)
-    publish = models.DateTimeField(default=timezone.now, blank=True, null=True)
-    reply = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True, related_name='replies')
-    agree = models.PositiveSmallIntegerField(blank=True, default=0)
-    disagree = models.PositiveSmallIntegerField(blank=True, default=0)
+    name = models.CharField(_('name'), max_length=30, unique=True)
+    text = models.TextField(_('text'), max_length=300)
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('author'))
+    article = models.ForeignKey(Blog, on_delete=models.CASCADE, blank=True, null=True, default=None ,
+                                related_name='comments', verbose_name=_('article'))
+    status = models.BooleanField(_('status'), default=False)
+    publish = models.DateTimeField(_('publish'), default=timezone.now, blank=True, null=True)
+    reply = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True,
+                              related_name='replies', verbose_name=_('reply'))
+    agree = models.PositiveSmallIntegerField(_('agree'), blank=True, default=0)
+    disagree = models.PositiveSmallIntegerField(_('disagree'), blank=True, default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
@@ -34,6 +37,8 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-publish']
+        verbose_name = _('comment')
+        verbose_name_plural = _('comments')
         
     def __str__(self):
         return self.name
@@ -47,5 +52,3 @@ class Comment(models.Model):
     
     def published_replies(self):
         return self.replies.published().count()
-        
-    

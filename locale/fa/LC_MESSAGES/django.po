@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 16:53+0330\n"
+"POT-Creation-Date: 2023-07-12 00:34+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,199 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/apps.py:7
+msgid "account"
+msgstr "حساب"
+
+#: accounts/models.py:31
+msgid "unknown"
+msgstr "ناشناس"
+
+#: accounts/models.py:32
+msgid "male"
+msgstr "مذکر"
+
+#: accounts/models.py:33
+msgid "female"
+msgstr "مونث"
+
+#: accounts/models.py:35
+msgid "is_author"
+msgstr "نویسنده"
+
+#: accounts/models.py:36
+msgid "special user"
+msgstr "کاربر ویژه"
+
+#: accounts/models.py:37
+msgid "email"
+msgstr "ایمیل"
+
+#: accounts/models.py:38
+msgid "personal info"
+msgstr "مشخصات فردی"
+
+#: accounts/models.py:39
+msgid "phone"
+msgstr "تلفن"
+
+#: accounts/models.py:40
+msgid "mobile"
+msgstr "موبایل"
+
+#: accounts/models.py:41
+msgid "home address"
+msgstr "آدرس محل زندگی"
+
+#: accounts/models.py:42
+msgid "postal code"
+msgstr "کدپستی"
+
+#: accounts/models.py:43
+msgid "age"
+msgstr "سن"
+
+#: accounts/models.py:44
+msgid "gender"
+msgstr "جنسیت"
+
+#: accounts/models.py:45
+msgid "degree"
+msgstr "مدرک"
+
+#: blog/apps.py:8 blog/models.py:107
+msgid "blog"
+msgstr "مقاله"
+
+#: blog/models.py:27
+msgid "IP Address"
+msgstr "آدرس آیپی"
+
+#: blog/models.py:30
+msgid "ip"
+msgstr "آیپی"
+
+#: blog/models.py:31
+msgid "ips"
+msgstr "آیپی ها"
+
+#: blog/models.py:39 blog/models.py:81
+msgid "title"
+msgstr "عنوان"
+
+#: blog/models.py:40 blog/models.py:82
+msgid "slug"
+msgstr "slug"
+
+#: blog/models.py:48
+msgid "parent"
+msgstr "parent"
+
+#: blog/models.py:51
+msgid "position"
+msgstr "position"
+
+#: blog/models.py:55 blog/models.py:98 comments/models.py:27
+msgid "status"
+msgstr "وضعیت"
+
+#: blog/models.py:62 blog/models.py:86
+msgid "category"
+msgstr "دسته بندی"
+
+#: blog/models.py:63
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: blog/models.py:76
+msgid "draft"
+msgstr "پیشنویس"
+
+#: blog/models.py:77 blog/models.py:97 comments/models.py:28
+msgid "publish"
+msgstr "انتشار"
+
+#: blog/models.py:78
+msgid "investigation"
+msgstr "بررسی"
+
+#: blog/models.py:79 templates/comments/comment_delete.html:14
+msgid "back"
+msgstr "بازگشت"
+
+#: blog/models.py:84 comments/models.py:24
+msgid "author"
+msgstr "نویسنده"
+
+#: blog/models.py:85
+msgid "content"
+msgstr "محتوا"
+
+#: blog/models.py:88
+msgid "code"
+msgstr "کد"
+
+#: blog/models.py:93
+msgid "view"
+msgstr "بازدید"
+
+#: blog/models.py:95
+msgid "hits"
+msgstr "رای"
+
+#: blog/models.py:96
+msgid "thumbnail"
+msgstr "تصویر"
+
+#: blog/models.py:99
+msgid "special"
+msgstr "ویژه"
+
+#: blog/models.py:108
+msgid "blogs"
+msgstr "مقالات"
+
+#: blog/models.py:139 templates/blog/author.html:22
+msgid "articles"
+msgstr "مقالات"
+
+#: blog/models.py:140
+msgid "ip address"
+msgstr "آدرس آیپی"
+
+#: comments/apps.py:8 comments/models.py:40
+msgid "comment"
+msgstr "نظرات"
+
+#: comments/models.py:22
+msgid "name"
+msgstr "نام"
+
+#: comments/models.py:23
+msgid "text"
+msgstr "متن"
+
+#: comments/models.py:26
+msgid "article"
+msgstr "مقاله"
+
+#: comments/models.py:30
+msgid "reply"
+msgstr "پاسخ"
+
+#: comments/models.py:31
+msgid "agree"
+msgstr "موافق"
+
+#: comments/models.py:32
+msgid "disagree"
+msgstr "مخالف"
+
+#: comments/models.py:41 templates/comments/article_comments.html:5
+msgid "comments"
+msgstr "نظرات"
+
 #: templates/accounts/account_activation.html:8
 #: templates/accounts/email_message.html:8
 msgid "activation account"
@@ -42,7 +235,9 @@ msgstr "از اینکه در سایت ما ثبتنام کردید متشکری�
 #: templates/accounts/email_message.html:12
 msgid ""
 "this email was sended because of your signup. if you didn't signup ignore it."
-msgstr "این ایمیل به دلیل ثبتنام شمادر سایت ارسال گردیده است. اگر شما ثبتنام نکرده اید آن را نادیده بگیرید."
+msgstr ""
+"این ایمیل به دلیل ثبتنام شمادر سایت ارسال گردیده است. اگر شما ثبتنام نکرده "
+"اید آن را نادیده بگیرید."
 
 #: templates/accounts/login.html:10
 msgid "login"
@@ -105,7 +300,9 @@ msgstr "لطفا رمز خود را دو مرتبه وارد نمایید"
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset from "
-msgstr "لینک بازیابی نامعتبر است. ممکن است یکبار از آن استفاده کرده باشید. لطفا برای بازیابی یک درخواست جدید بدهید از"
+msgstr ""
+"لینک بازیابی نامعتبر است. ممکن است یکبار از آن استفاده کرده باشید. لطفا برای "
+"بازیابی یک درخواست جدید بدهید از"
 
 #: templates/accounts/reset_password_done.html:5
 msgid "send email"
@@ -115,18 +312,23 @@ msgstr "ارسال ایمیل"
 msgid ""
 "We’ve emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
-msgstr "ما دستورات لازم برای تغییر رمز را برایتان ایمیل کردیم. اگر حسابی با ایمیلی که وارد کردید موجود باشد بهزودی آن را دریافت خواهید کرد."
+msgstr ""
+"ما دستورات لازم برای تغییر رمز را برایتان ایمیل کردیم. اگر حسابی با ایمیلی "
+"که وارد کردید موجود باشد بهزودی آن را دریافت خواهید کرد."
 
 #: templates/accounts/reset_password_done.html:16
 msgid ""
 "If you don’t receive an email, please make sure you’ve entered the address "
 "you registered with, and check your spam folder."
-msgstr "اگر ایمیلی دریافت نکردید. لطفا مطمئن شوید همان ایمیلی که با آن ثبتنام کرده اید را وارد میکنید و پوشه ی اسپم خود را بررسی کنید"
+msgstr ""
+"اگر ایمیلی دریافت نکردید. لطفا مطمئن شوید همان ایمیلی که با آن ثبتنام کرده "
+"اید را وارد میکنید و پوشه ی اسپم خود را بررسی کنید"
 
 #: templates/accounts/reset_password_email.html:2
 msgid ""
 "You're receiving this email because you requested a password reset for your "
-"user account"
+"user account at {{\n"
+"site_name }}."
 msgstr "شما این ایمیل را به دلیل درخواست بازیابی رمز در سایت دریافت کرده اید"
 
 #: templates/accounts/reset_password_email.html:5
@@ -415,7 +617,7 @@ msgstr "بازدیدها: "
 #: templates/blog/category_articles.html:15
 #: templates/blog/most_viewed_articles.html:16
 msgid "Special Article"
-msgstr "مقالات ویژه"
+msgstr "مقاله ویژه"
 
 #: templates/blog/article_detail.html:35
 msgid "This article is for special users,  Please get special account ."
@@ -583,7 +785,7 @@ msgstr "مقالات هفته اخیر"
 
 #: templates/blog/aside.html:9 templates/blog/aside.html:18
 msgid "last day articles"
-msgstr "مقالات روزآخرین روز"
+msgstr "مقالات آخرین روز"
 
 #: templates/blog/aside.html:10 templates/blog/aside.html:19
 msgid "last five articles"
@@ -620,10 +822,6 @@ msgstr "مدرک : "
 #: templates/blog/author.html:19
 msgid "personal_info : "
 msgstr "مشخصات فردی : "
-
-#: templates/blog/author.html:22
-msgid "articles"
-msgstr "مقالات"
 
 #: templates/blog/base.html:18
 msgid "base title"
@@ -662,9 +860,9 @@ msgstr "خوش آمدید "
 msgid " Logout"
 msgstr " خروج"
 
-#: templates/blog/navbar.html:33
+#: templates/blog/navbar.html:37
 msgid "Search"
-msgstr " جست و جو"
+msgstr " جست وجو"
 
 #: templates/blog/profile/profile.html:21
 msgid "profile"
@@ -734,9 +932,9 @@ msgstr "جنسیت :"
 msgid "Degree :"
 msgstr "مدرک :"
 
-#: templates/comments/article_comments.html:5
-msgid "comments"
-msgstr "نظرات"
+#: templates/blog/share_post.html:12
+msgid "share post"
+msgstr "به اشتراک گذاشتن پست"
 
 #: templates/comments/comment_create.html:5
 #: templates/comments/comment_update.html:5
@@ -754,10 +952,6 @@ msgstr "حذف نظر"
 #: templates/comments/comment_delete.html:10
 msgid "are you sure to delete "
 msgstr "آیا مطمئن هستید برای حذف "
-
-#: templates/comments/comment_delete.html:14
-msgid "back"
-msgstr "بازگشت"
 
 #: templates/comments/comment_detail.html:5
 msgid "detail comment"
