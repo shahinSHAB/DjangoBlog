@@ -1,10 +1,8 @@
-from typing import Any
-from django.db import models
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
-from django.shortcuts import get_object_or_404, get_list_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404, redirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.utils import timezone
@@ -345,14 +343,12 @@ class SharePostView(LoginRequiredMixin, SuccessMessageMixin, generic.FormView, g
 
 
 # ============ Change Language ==============
-# class ChangeLanguageView(generic.RedirectView):
-    
-#     def get(self, request, *args, **kwargs):
-#         if self.request.GET.get('lang') == 'fa':
-#             activate('fa')
-#         elif self.request.GET.get('lang') == 'en':
-#             activate('en')
-#         return super().get(request, *args, **kwargs)
-    
-#     def get_redirect_url(self, *args, **kwargs):
-#         return reverse_lazy(self.request.GET.get('next'))
+class ChangeLanguageView(generic.RedirectView):
+
+    def get(self, request, *args, **kwargs):
+        language_code = request.GET.get('lang')
+        activate(language_code)
+        return self.get_redirect_url(*args, **kwargs)
+
+    def get_redirect_url(self, *args, **kwargs):
+        return redirect(self.request.GET.get('next'))

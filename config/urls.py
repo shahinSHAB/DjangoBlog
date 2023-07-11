@@ -23,6 +23,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView
     )
 from django.contrib.sitemaps.views import sitemap
+from django.conf.urls.i18n import i18n_patterns
 
 from blog.sitemaps import PostSitemap
 from blog.models import Blog
@@ -52,6 +53,14 @@ urlpatterns = [
         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
+# =============== Add urls to internationalization ===============
+# urlpatterns += i18n_patterns(
+    # path('', include('blog.urls', namespace='blog')),
+    # path('accounts/', include('accounts.urls', namespace='accounts')),
+    # path('comments/', include('comments.urls', namespace='comments')),
+# )
+
 # ================ Media and Static directory in development ==================
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

@@ -1,0 +1,816 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-11 16:53+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: templates/accounts/account_activation.html:8
+#: templates/accounts/email_message.html:8
+msgid "activation account"
+msgstr "فعال سازی اکانت"
+
+#: templates/accounts/change_password_done.html:28
+msgid "Your password Changed successfully"
+msgstr "رمز شما با موفقیت تغییر یافت"
+
+#: templates/accounts/change_password_done.html:29
+msgid "for login again please click "
+msgstr "برای ورود دوباره لطفا کلیک کنید"
+
+#: templates/accounts/change_password_done.html:29
+#: templates/accounts/reset_password_confirm.html:58
+msgid "here"
+msgstr "اینجا"
+
+#: templates/accounts/email_message.html:11
+msgid "Thank You for registering in our site."
+msgstr "از اینکه در سایت ما ثبتنام کردید متشکریم"
+
+#: templates/accounts/email_message.html:12
+msgid ""
+"this email was sended because of your signup. if you didn't signup ignore it."
+msgstr "این ایمیل به دلیل ثبتنام شمادر سایت ارسال گردیده است. اگر شما ثبتنام نکرده اید آن را نادیده بگیرید."
+
+#: templates/accounts/login.html:10
+msgid "login"
+msgstr "ورود"
+
+#: templates/accounts/login.html:26 templates/blog/navbar.html:25
+msgid "Login"
+msgstr "ورود"
+
+#: templates/accounts/login.html:28
+msgid "Forgot password?"
+msgstr "فراموشی رمز؟"
+
+#: templates/accounts/login.html:29
+msgid "Create account"
+msgstr "ایجاد حساب"
+
+#: templates/accounts/logout.html:6
+msgid "logout"
+msgstr "خروج"
+
+#: templates/accounts/reset_password.html:10
+msgid "password reset"
+msgstr "بازیابی رمز"
+
+#: templates/accounts/reset_password_complete.html:5
+msgid "change  successfully"
+msgstr "با موفقیت تغییر یافت"
+
+#: templates/accounts/reset_password_complete.html:10
+#: templates/accounts/reset_password_done.html:10
+#: templates/admin_panel/navbar.html:11 templates/blog/navbar.html:14
+msgid "Home"
+msgstr "خانه"
+
+#: templates/accounts/reset_password_complete.html:11
+#: templates/accounts/reset_password_done.html:11
+msgid " Password reset"
+msgstr "بازیابی رمز"
+
+#: templates/accounts/reset_password_complete.html:14
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "رمز شما تغییر یافت. شما اکنون میتوانید دوباره وارد شوید"
+
+#: templates/accounts/reset_password_complete.html:16
+msgid "Log in"
+msgstr "ورود"
+
+#: templates/accounts/reset_password_confirm.html:5
+msgid "change password"
+msgstr "تغییر رمز"
+
+#: templates/accounts/reset_password_confirm.html:17
+msgid ""
+"Please enter your new password twice so we can verify you typed it "
+"incorrectly."
+msgstr "لطفا رمز خود را دو مرتبه وارد نمایید"
+
+#: templates/accounts/reset_password_confirm.html:57
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset from "
+msgstr "لینک بازیابی نامعتبر است. ممکن است یکبار از آن استفاده کرده باشید. لطفا برای بازیابی یک درخواست جدید بدهید از"
+
+#: templates/accounts/reset_password_done.html:5
+msgid "send email"
+msgstr "ارسال ایمیل"
+
+#: templates/accounts/reset_password_done.html:14
+msgid ""
+"We’ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr "ما دستورات لازم برای تغییر رمز را برایتان ایمیل کردیم. اگر حسابی با ایمیلی که وارد کردید موجود باشد بهزودی آن را دریافت خواهید کرد."
+
+#: templates/accounts/reset_password_done.html:16
+msgid ""
+"If you don’t receive an email, please make sure you’ve entered the address "
+"you registered with, and check your spam folder."
+msgstr "اگر ایمیلی دریافت نکردید. لطفا مطمئن شوید همان ایمیلی که با آن ثبتنام کرده اید را وارد میکنید و پوشه ی اسپم خود را بررسی کنید"
+
+#: templates/accounts/reset_password_email.html:2
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account"
+msgstr "شما این ایمیل را به دلیل درخواست بازیابی رمز در سایت دریافت کرده اید"
+
+#: templates/accounts/reset_password_email.html:5
+msgid "Please go to the following page and choose a new password:"
+msgstr "لطفا به صفحه ی زیر بروید و یک رمز جدید انتخاب کنید"
+
+#: templates/accounts/reset_password_email.html:9
+msgid "Your username, in case you’ve forgotten:"
+msgstr "نام کاربری شماو در صورتی که آنرا فراموش کرده اید:"
+
+#: templates/accounts/reset_password_email.html:11
+msgid "Thanks for using our site!"
+msgstr "به خاطر استفاده از سایت ما از شما متشکریم"
+
+#: templates/accounts/reset_password_email.html:13
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "تیم سایت"
+
+#: templates/accounts/signup.html:16
+msgid "Sign Up"
+msgstr "ثبت نام"
+
+#: templates/admin_panel/article_create.html:6
+#: templates/admin_panel/article_create.html:19
+#: templates/admin_panel/aside.html:44
+msgid "Create Article"
+msgstr "ایجاد مقاله"
+
+#: templates/admin_panel/article_create.html:28
+#: templates/admin_panel/article_update.html:27
+#: templates/admin_panel/category_update.html:27
+msgid "Title :"
+msgstr "عنوان :"
+
+#: templates/admin_panel/article_create.html:31
+#: templates/admin_panel/article_update.html:30
+#: templates/admin_panel/category_update.html:30
+msgid "Slug :"
+msgstr "slug :"
+
+#: templates/admin_panel/article_create.html:34
+#: templates/admin_panel/article_update.html:33
+#: templates/admin_panel/index.html:55
+msgid "Special"
+msgstr "ویژه :"
+
+#: templates/admin_panel/article_create.html:37
+#: templates/admin_panel/article_update.html:36
+msgid "Author :"
+msgstr "نویسنده :"
+
+#: templates/admin_panel/article_create.html:40
+#: templates/admin_panel/article_update.html:39
+msgid "Category :"
+msgstr "دسته بندی :"
+
+#: templates/admin_panel/article_create.html:43
+#: templates/admin_panel/article_update.html:42
+msgid "Content :"
+msgstr "محتوا :"
+
+#: templates/admin_panel/article_create.html:46
+#: templates/admin_panel/article_update.html:45
+msgid "Code :"
+msgstr "کد :"
+
+#: templates/admin_panel/article_create.html:49
+msgid "Publish :"
+msgstr "انتشار :"
+
+#: templates/admin_panel/article_create.html:52
+#: templates/admin_panel/article_update.html:48
+msgid "Status :"
+msgstr "وضعیت :"
+
+#: templates/admin_panel/article_create.html:68
+#: templates/admin_panel/article_update.html:64
+msgid "Thumbnail :"
+msgstr "تصویر :"
+
+#: templates/admin_panel/article_create.html:75
+#: templates/admin_panel/article_update.html:70
+msgid "Upload"
+msgstr "بارگزاری"
+
+#: templates/admin_panel/article_create.html:83
+#: templates/admin_panel/category_create.html:49
+msgid "Create"
+msgstr "ایجاد کردن"
+
+#: templates/admin_panel/article_delete.html:6
+#: templates/admin_panel/article_delete.html:19
+msgid "Delete Article"
+msgstr "حذف مقاله"
+
+#: templates/admin_panel/article_delete.html:26
+#: templates/admin_panel/category_delete.html:26
+msgid "Are you sure you want to delete "
+msgstr "آیا مطمئن هستید از حذف مقاله ی "
+
+#: templates/admin_panel/article_delete.html:26
+#: templates/admin_panel/category_delete.html:26
+#: templates/comments/comment_delete.html:10
+msgid " ?"
+msgstr " ؟"
+
+#: templates/admin_panel/article_delete.html:31
+#: templates/admin_panel/category_delete.html:31
+msgid "Delete"
+msgstr "حذف کردن"
+
+#: templates/admin_panel/article_delete.html:32
+#: templates/admin_panel/category_delete.html:32
+msgid "Cancel"
+msgstr "لغو"
+
+#: templates/admin_panel/article_update.html:6
+#: templates/admin_panel/article_update.html:19
+msgid "Update Article"
+msgstr "ویرایش مقاله"
+
+#: templates/admin_panel/article_update.html:78
+#: templates/admin_panel/category_update.html:45
+#: templates/blog/profile/profile_update.html:66
+msgid "Update"
+msgstr "ویرایش"
+
+#: templates/admin_panel/aside.html:9
+msgid "Django Site"
+msgstr "سایت جنگویی"
+
+#: templates/admin_panel/aside.html:21
+msgid "person"
+msgstr "شخص"
+
+#: templates/admin_panel/aside.html:34 templates/admin_panel/index.html:6
+#: templates/admin_panel/index.html:23
+msgid "Articles"
+msgstr "مقالات"
+
+#: templates/admin_panel/aside.html:58
+msgid " Profile"
+msgstr "پروفایل"
+
+#: templates/admin_panel/base.html:10
+msgid "AdminPanel | Dashboard"
+msgstr " پنل مدیریت | داشبورد"
+
+#: templates/admin_panel/category_create.html:6
+#: templates/admin_panel/category_create.html:19
+msgid "Create Category"
+msgstr "ایجاد دسته بندی"
+
+#: templates/admin_panel/category_create.html:27
+msgid "Title: "
+msgstr "عنوان: "
+
+#: templates/admin_panel/category_create.html:31
+msgid "Slug: "
+msgstr "Slug:"
+
+#: templates/admin_panel/category_create.html:35
+msgid "Parent: "
+msgstr "Parent:"
+
+#: templates/admin_panel/category_create.html:39
+msgid "Position: "
+msgstr "Position:"
+
+#: templates/admin_panel/category_create.html:43
+msgid "Status: "
+msgstr "وضعیت: "
+
+#: templates/admin_panel/category_delete.html:6
+#: templates/admin_panel/category_delete.html:19
+msgid "Delete Category"
+msgstr "حذف دسته بندی"
+
+#: templates/admin_panel/category_update.html:6
+#: templates/admin_panel/category_update.html:19
+msgid "Update Category"
+msgstr "ویرایش دسته بندی"
+
+#: templates/admin_panel/category_update.html:33
+#: templates/admin_panel/index.html:54
+msgid "Status"
+msgstr "وضعیت"
+
+#: templates/admin_panel/category_update.html:36
+msgid "Parent :"
+msgstr "Parent :"
+
+#: templates/admin_panel/category_update.html:39
+msgid "Position :"
+msgstr "Position :"
+
+#: templates/admin_panel/index.html:46
+msgid "ID"
+msgstr "ID"
+
+#: templates/admin_panel/index.html:47
+msgid "Title"
+msgstr "عنوان"
+
+#: templates/admin_panel/index.html:48
+msgid "Slug"
+msgstr "Slug"
+
+#: templates/admin_panel/index.html:49
+msgid "Author"
+msgstr "نویسنده"
+
+#: templates/admin_panel/index.html:50
+msgid "Content"
+msgstr "محتوا"
+
+#: templates/admin_panel/index.html:51
+msgid "Category"
+msgstr "دسته بندی"
+
+#: templates/admin_panel/index.html:52
+msgid "Code"
+msgstr "کد"
+
+#: templates/admin_panel/index.html:53
+msgid "View"
+msgstr "بازدید"
+
+#: templates/admin_panel/index.html:56
+msgid "Publish"
+msgstr "انتشار"
+
+#: templates/admin_panel/index.html:57
+msgid "Image"
+msgstr "عکس"
+
+#: templates/admin_panel/index.html:68 templates/admin_panel/index.html:76
+#: templates/comments/comment_detail.html:26
+msgid "delete"
+msgstr "حذف کردن"
+
+#: templates/admin_panel/index.html:70 templates/admin_panel/index.html:78
+#: templates/admin_panel/index.html:82 templates/admin_panel/preview.html:18
+msgid "preview"
+msgstr "پیشنمایش"
+
+#: templates/admin_panel/navbar.html:14
+msgid "Contact"
+msgstr "ارتباط"
+
+#: templates/admin_panel/preview.html:27
+msgid "Article Preview"
+msgstr "پیشنمایش مقاله"
+
+#: templates/admin_panel/preview.html:39 templates/blog/article_detail.html:17
+#: templates/blog/article_list.html:18 templates/blog/articles_period.html:19
+#: templates/blog/category_articles.html:18
+#: templates/blog/most_viewed_articles.html:19
+msgid "Posted by: "
+msgstr "نوشته شده توسط: "
+
+#: templates/admin_panel/preview.html:41 templates/blog/article_detail.html:18
+#: templates/blog/article_list.html:19 templates/blog/articles_period.html:21
+#: templates/blog/category_articles.html:20
+#: templates/blog/most_viewed_articles.html:21
+msgid "Code= "
+msgstr "کد= "
+
+#: templates/admin_panel/preview.html:53 templates/blog/article_detail.html:66
+#: templates/blog/article_list.html:39 templates/blog/articles_period.html:40
+#: templates/blog/category_articles.html:39
+#: templates/blog/most_viewed_articles.html:40
+msgid "Categories:"
+msgstr "دسته بندی ها:"
+
+#: templates/admin_panel/preview.html:59 templates/blog/article_detail.html:72
+#: templates/blog/article_list.html:45 templates/blog/articles_period.html:47
+#: templates/blog/category_articles.html:45
+#: templates/blog/most_viewed_articles.html:47
+msgid "Views: "
+msgstr "بازدیدها: "
+
+#: templates/blog/article_detail.html:14 templates/blog/article_list.html:15
+#: templates/blog/articles_period.html:16 templates/blog/author.html:27
+#: templates/blog/category_articles.html:15
+#: templates/blog/most_viewed_articles.html:16
+msgid "Special Article"
+msgstr "مقالات ویژه"
+
+#: templates/blog/article_detail.html:35
+msgid "This article is for special users,  Please get special account ."
+msgstr "این مقاله برای کاربران ویژه است. لطفا یک حساب ویژه تهیه کنید"
+
+#: templates/blog/article_detail.html:39 templates/blog/article_detail.html:44
+#: templates/blog/article_detail.html:49 templates/blog/article_detail.html:54
+msgid "GET "
+msgstr "خرید "
+
+#: templates/blog/article_detail.html:39 templates/blog/article_detail.html:54
+msgid "1"
+msgstr "۱"
+
+#: templates/blog/article_detail.html:39 templates/blog/article_detail.html:44
+#: templates/blog/article_detail.html:49
+msgid " MONTH "
+msgstr " ماه"
+
+#: templates/blog/article_detail.html:39
+msgid "10$"
+msgstr "10$"
+
+#: templates/blog/article_detail.html:40 templates/blog/article_detail.html:45
+#: templates/blog/article_detail.html:50 templates/blog/article_detail.html:55
+msgid ""
+"get this account to use special option and amazing articles in this site "
+msgstr "برای بهره مندی از امکانات و مقالات ویژه سایت. این حساب را خریداری کنید"
+
+#: templates/blog/article_detail.html:41 templates/blog/article_detail.html:46
+#: templates/blog/article_detail.html:51 templates/blog/article_detail.html:56
+msgid "BUY ACCOUNT"
+msgstr "خرید حساب"
+
+#: templates/blog/article_detail.html:44
+msgid "3"
+msgstr "۳"
+
+#: templates/blog/article_detail.html:44
+msgid "20$"
+msgstr "20$"
+
+#: templates/blog/article_detail.html:44
+msgid "16$"
+msgstr "16$"
+
+#: templates/blog/article_detail.html:49
+msgid "6"
+msgstr "۶"
+
+#: templates/blog/article_detail.html:49
+msgid "60$"
+msgstr "60$"
+
+#: templates/blog/article_detail.html:49
+msgid "50$"
+msgstr "50$"
+
+#: templates/blog/article_detail.html:54
+msgid " YEAR "
+msgstr " سال"
+
+#: templates/blog/article_detail.html:54
+msgid "120$"
+msgstr "120$"
+
+#: templates/blog/article_detail.html:54
+msgid "95$"
+msgstr "95$"
+
+#: templates/blog/article_detail.html:79
+msgid "Comments"
+msgstr "نظرات"
+
+#: templates/blog/article_detail.html:82
+msgid "New Comment"
+msgstr "نظر جدید"
+
+#: templates/blog/article_detail.html:86 templates/blog/article_detail.html:114
+msgid "name :"
+msgstr "نام :"
+
+#: templates/blog/article_detail.html:87 templates/blog/article_detail.html:115
+msgid "your name"
+msgstr " نام شما"
+
+#: templates/blog/article_detail.html:90 templates/blog/article_detail.html:118
+msgid "text :"
+msgstr "متن :"
+
+#: templates/blog/article_detail.html:93 templates/blog/article_detail.html:121
+msgid "Send"
+msgstr "ارسال"
+
+#: templates/blog/article_detail.html:98
+msgid "please "
+msgstr "لطفا "
+
+#: templates/blog/article_detail.html:98
+msgid " login "
+msgstr " ورود "
+
+#: templates/blog/article_detail.html:98
+msgid " for joining discussion and add your comment."
+msgstr " برای شرکت در بحث و افزودن نظر خود."
+
+#: templates/blog/article_detail.html:105
+#: templates/blog/article_detail.html:129
+msgid "agree = "
+msgstr "موافق = "
+
+#: templates/blog/article_detail.html:105
+#: templates/blog/article_detail.html:130
+msgid "disagree = "
+msgstr "مخالف = "
+
+#: templates/blog/article_detail.html:108
+msgid "Reply"
+msgstr "پاسخ"
+
+#: templates/blog/article_detail.html:142
+msgid "there is not any comment yet ..."
+msgstr "هیچ نظری هنوز وجود ندارد ..."
+
+#: templates/blog/article_list.html:7
+msgid "home"
+msgstr "خانه"
+
+#: templates/blog/article_list.html:50 templates/blog/category_articles.html:50
+msgid "there is not any article ..."
+msgstr "هیچ مقاله ای وجود ندارد ..."
+
+#: templates/blog/articles_period.html:7
+msgid "articles period"
+msgstr "دوره زمانی مقالات"
+
+#: templates/blog/articles_period.html:52
+#: templates/blog/most_viewed_articles.html:52
+msgid "there is not any article yet ..."
+msgstr "هیچ مقاله ای هنوز وجود ندارد ..."
+
+#: templates/blog/articles_period.html:61
+#: templates/blog/paginate_buttons.html:8
+msgid " Newer Articles"
+msgstr " مقالات جدید"
+
+#: templates/blog/articles_period.html:68
+#: templates/blog/category_articles.html:67
+#: templates/blog/most_viewed_articles.html:69
+#: templates/blog/paginate_buttons.html:15
+msgid "Older Articles "
+msgstr "مقالات قدیمی "
+
+#: templates/blog/aside.html:5
+msgid "Last Periodic Articles"
+msgstr "آخرین مقالات بر حسب زمان"
+
+#: templates/blog/aside.html:7 templates/blog/aside.html:16
+msgid "last month articles"
+msgstr "مقالات ماه اخیر"
+
+#: templates/blog/aside.html:8 templates/blog/aside.html:17
+msgid "last week articles"
+msgstr "مقالات هفته اخیر"
+
+#: templates/blog/aside.html:9 templates/blog/aside.html:18
+msgid "last day articles"
+msgstr "مقالات روزآخرین روز"
+
+#: templates/blog/aside.html:10 templates/blog/aside.html:19
+msgid "last five articles"
+msgstr "پنج مقاله ی اخیر"
+
+#: templates/blog/aside.html:11
+msgid "RSS"
+msgstr "RSS"
+
+#: templates/blog/aside.html:14
+msgid "Most Viewed Articles"
+msgstr "مقالات پربازدید"
+
+#: templates/blog/author.html:6
+msgid "detail"
+msgstr "جزئیات"
+
+#: templates/blog/author.html:15
+msgid "username : "
+msgstr "نام کاربری : "
+
+#: templates/blog/author.html:16
+msgid "first_name : "
+msgstr "نام : "
+
+#: templates/blog/author.html:17
+msgid "age : "
+msgstr "سن : "
+
+#: templates/blog/author.html:18
+msgid "degree : "
+msgstr "مدرک : "
+
+#: templates/blog/author.html:19
+msgid "personal_info : "
+msgstr "مشخصات فردی : "
+
+#: templates/blog/author.html:22
+msgid "articles"
+msgstr "مقالات"
+
+#: templates/blog/base.html:18
+msgid "base title"
+msgstr "عنوان اصلی"
+
+#: templates/blog/base.html:34 templates/blog/profile/profile.html:42
+msgid "Any Blog"
+msgstr "هر وبلاگی"
+
+#: templates/blog/base.html:43
+msgid " default content"
+msgstr " محتوای پیشفرض"
+
+#: templates/blog/category_articles.html:10
+msgid "articles of : "
+msgstr "مقالات مرتبط با :"
+
+#: templates/blog/most_viewed_articles.html:7
+#: templates/blog/most_viewed_articles.html:11
+msgid "most viewed articles"
+msgstr "مقالات بیشتر دیده شده"
+
+#: templates/blog/navbar.html:6
+msgid "Navbar"
+msgstr "Navbar"
+
+#: templates/blog/navbar.html:18
+msgid "Profile"
+msgstr "پروفایل"
+
+#: templates/blog/navbar.html:20
+msgid "welcome "
+msgstr "خوش آمدید "
+
+#: templates/blog/navbar.html:21
+msgid " Logout"
+msgstr " خروج"
+
+#: templates/blog/navbar.html:33
+msgid "Search"
+msgstr " جست و جو"
+
+#: templates/blog/profile/profile.html:21
+msgid "profile"
+msgstr "پروفایل"
+
+#: templates/blog/profile/profile.html:72
+msgid "Change Password"
+msgstr "تغییر رمز"
+
+#: templates/blog/profile/profile.html:97
+msgid "Edit Profile"
+msgstr "ویرایش پروفایل"
+
+#: templates/blog/profile/profile_update.html:6
+msgid "update profile"
+msgstr "ویرایش پروفایل"
+
+#: templates/blog/profile/profile_update.html:19
+msgid "Update Profile"
+msgstr "ویرایش پروفایل"
+
+#: templates/blog/profile/profile_update.html:27
+msgid "Username :"
+msgstr "نام کاربری :"
+
+#: templates/blog/profile/profile_update.html:30
+msgid "Email :"
+msgstr "ایمیل :"
+
+#: templates/blog/profile/profile_update.html:33
+msgid "Name :"
+msgstr "نام :"
+
+#: templates/blog/profile/profile_update.html:36
+msgid "Family :"
+msgstr "نام خانوادگی :"
+
+#: templates/blog/profile/profile_update.html:39
+msgid "Telephone :"
+msgstr "تلفن :"
+
+#: templates/blog/profile/profile_update.html:42
+msgid "Mobile :"
+msgstr "موبایل :"
+
+#: templates/blog/profile/profile_update.html:45
+msgid "Bio :"
+msgstr "بیوگرافی :"
+
+#: templates/blog/profile/profile_update.html:48
+msgid "Address :"
+msgstr "آدرس :"
+
+#: templates/blog/profile/profile_update.html:51
+msgid "Postal Code :"
+msgstr "کدپستی :"
+
+#: templates/blog/profile/profile_update.html:54
+msgid "Age :"
+msgstr "سن :"
+
+#: templates/blog/profile/profile_update.html:57
+msgid "Gender :"
+msgstr "جنسیت :"
+
+#: templates/blog/profile/profile_update.html:60
+msgid "Degree :"
+msgstr "مدرک :"
+
+#: templates/comments/article_comments.html:5
+msgid "comments"
+msgstr "نظرات"
+
+#: templates/comments/comment_create.html:5
+#: templates/comments/comment_update.html:5
+msgid "create comment"
+msgstr "ایجاد نظر"
+
+#: templates/comments/comment_create.html:13
+msgid "create"
+msgstr "ایجاد کردن"
+
+#: templates/comments/comment_delete.html:5
+msgid "delete comment"
+msgstr "حذف نظر"
+
+#: templates/comments/comment_delete.html:10
+msgid "are you sure to delete "
+msgstr "آیا مطمئن هستید برای حذف "
+
+#: templates/comments/comment_delete.html:14
+msgid "back"
+msgstr "بازگشت"
+
+#: templates/comments/comment_detail.html:5
+msgid "detail comment"
+msgstr "حذف نظر"
+
+#: templates/comments/comment_detail.html:10
+msgid "name : "
+msgstr "نام : "
+
+#: templates/comments/comment_detail.html:11
+msgid "text : "
+msgstr "متن : "
+
+#: templates/comments/comment_detail.html:12
+msgid "status : "
+msgstr "وضعیت : "
+
+#: templates/comments/comment_detail.html:13
+msgid "author : "
+msgstr "نویسنده : "
+
+#: templates/comments/comment_detail.html:14
+msgid "article : "
+msgstr "مقاله : "
+
+#: templates/comments/comment_detail.html:15
+msgid "agree : "
+msgstr "موافق : "
+
+#: templates/comments/comment_detail.html:16
+msgid "disagree : "
+msgstr "مخالف : "
+
+#: templates/comments/comment_detail.html:17
+msgid "publish : "
+msgstr "انتشار : "
+
+#: templates/comments/comment_detail.html:18
+msgid "reply : "
+msgstr "پاسخ : "
+
+#: templates/comments/comment_detail.html:20
+msgid "replies : "
+msgstr "پاسخ ها : "
+
+#: templates/comments/comment_detail.html:22
+msgid "There is no reply yet ..."
+msgstr " هیچ پاسخی هنوز وجود ندارد ..."
+
+#: templates/comments/comment_detail.html:25
+msgid "update"
+msgstr "ویرایش"
+
+#: templates/comments/published_comments.html:5
+msgid "published comments"
+msgstr "نظرات منتشر شده"

@@ -28,6 +28,10 @@
         {% nav_items %}
       </ul>
     </div>
+    <div style='color: white; position: absolute; right: 25%; left: auto;'>
+      <a href="{% url 'blog:change_language' %}?lang=fa&next={{request.path}}">FA</a> |
+      <a href="{% url 'blog:change_language' %}?lang=en&next={{request.path}}">EN</a>
+    </div>
     <form class="d-flex" role="search" method="get">
       <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light" type="submit">{% translate 'Search' %}</button>
