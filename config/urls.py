@@ -23,7 +23,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView
     )
 from django.contrib.sitemaps.views import sitemap
-from django.conf.urls.i18n import i18n_patterns
+# from django.conf.urls.i18n import i18n_patterns
 
 from blog.sitemaps import PostSitemap
 from blog.models import Blog
@@ -36,6 +36,10 @@ info_dict = {
 
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls', namespace='blog')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('comments/', include('comments.urls', namespace='comments')),
     path('__debug__/', include('debug_toolbar.urls')),      # For debug in development
     path('api-auth/', include('rest_framework.urls')),      # For browse api
     path('api/', include('api.urls', namespace='api')),
@@ -50,12 +54,12 @@ urlpatterns = [
 ]
 
 # =============== Add urls to internationalization ===============
-urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
-    path('', include('blog.urls', namespace='blog')),
-    path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('comments/', include('comments.urls', namespace='comments')),
-)
+# urlpatterns += i18n_patterns(
+#     path('admin/', admin.site.urls),
+#     path('', include('blog.urls', namespace='blog')),
+#     path('accounts/', include('accounts.urls', namespace='accounts')),
+#     path('comments/', include('comments.urls', namespace='comments')),
+# )
 
 # ================ Media and Static directory in development ==================
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

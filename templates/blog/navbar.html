@@ -29,8 +29,8 @@
       </ul>
     </div>
     <div style='color: white; position: absolute; right: 25%; left: auto;'>
-      <a href="{% url 'blog:change_language' %}?lang=fa&next=/fa/{{request.path|slice:'4:'}}">FA</a> |
-      <a href="{% url 'blog:change_language' %}?lang=en&next=/en/{{request.path|slice:'4:'}}">EN</a>
+      <a href="{% url 'blog:change_language' %}?lang=fa&next={{request.path}}">{% translate 'FA' %}</a> |
+      <a href="{% url 'blog:change_language' %}?lang=en&next={{request.path}}">{% translate 'EN' %}</a>
     </div>
     <form class="d-flex" role="search" method="get">
       <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">

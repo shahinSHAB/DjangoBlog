@@ -6,9 +6,9 @@
         <form action='' method='post'>
             {% csrf_token %}
             {{form.errors}}
-            person name: {{form.name}}<br/>
-            person email: {{form.email}}<br/>
-            Message: {{form.message}}<br/>
+            {% translate "person name: " %}{{form.name}}<br/>
+            {% translate "person email: " %}{{form.email}}<br/>
+            {% translate "Message: " %}{{form.message}}<br/>
             <input type='submit' value={% translate "share post" %}/>
         </form>
     </div>

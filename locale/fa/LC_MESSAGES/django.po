@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Shahin Asadi <shahin.asadi.95@gmail.com>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-12 00:34+0330\n"
+"POT-Creation-Date: 2023-07-12 15:48+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -860,6 +861,14 @@ msgstr "خوش آمدید "
 msgid " Logout"
 msgstr " خروج"
 
+#: templates/blog/navbar.html:32
+msgid "FA"
+msgstr "فارسی"
+
+#: templates/blog/navbar.html:33
+msgid "EN"
+msgstr "انگلیسی"
+
 #: templates/blog/navbar.html:37
 msgid "Search"
 msgstr " جست وجو"
@@ -932,9 +941,21 @@ msgstr "جنسیت :"
 msgid "Degree :"
 msgstr "مدرک :"
 
+#: templates/blog/share_post.html:9
+msgid "person name: "
+msgstr "نام مخاطب: "
+
+#: templates/blog/share_post.html:10
+msgid "person email: "
+msgstr "ایمیل مخاطب: "
+
+#: templates/blog/share_post.html:11
+msgid "Message: "
+msgstr "پیام: "
+
 #: templates/blog/share_post.html:12
 msgid "share post"
-msgstr "به اشتراک گذاشتن پست"
+msgstr "اشتراک گذاری"
 
 #: templates/comments/comment_create.html:5
 #: templates/comments/comment_update.html:5
