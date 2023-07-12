@@ -323,7 +323,7 @@ class SharePostView(LoginRequiredMixin, SuccessMessageMixin, generic.FormView, g
 
     def get_success_url(self):
         slug = self.get_object().slug
-        return reverse_lazy('blog:detail', kwargs={'slug':slug})
+        return reverse_lazy('blog:detail', kwargs={'slug': slug})
 
     def form_valid(self, form):
         cd = form.cleaned_data
@@ -331,8 +331,7 @@ class SharePostView(LoginRequiredMixin, SuccessMessageMixin, generic.FormView, g
         to_email = cd['email']
         obj = self.get_object()
         obj_url = self.request.build_absolute_uri(reverse_lazy('blog:detail',
-                                                    kwargs={'slug':obj.slug})
-                                                )
+                                                    kwargs={'slug':obj.slug}))
         user_name = self.request.user.username
         subject = f'Blog {obj.title}'
         message = f'user {user_name} send this mail for you: \n \

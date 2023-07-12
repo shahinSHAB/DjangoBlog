@@ -536,7 +536,7 @@ class TestBlogViews(TestCase):
         response = self.client.get(reverse('blog:most_viewed_articles', kwargs={'slug': 'last-day'}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Second')
-        self.assertNotContains(response, 'First')  # because article is older than day
+        self.assertNotContains(response, 'First')  # because article is older than a day
         
     # last-five_articles period most-view
     def test_most_viewed_articles_last_five_articles_url(self):
@@ -705,6 +705,49 @@ class TestBlogViews(TestCase):
         response = self.client.get(
             reverse('blog:article_preview', kwargs={'slug': 'first'}))
         self.assertContains(response, 'First')
+
+    # --------- Share Post View ----------
+    def test_share_post_without_login(self):
+        """User is not authenticated should not access the page
+        """
+        response = self.client.get('/first/share/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_share_post_with_login(self):
+        """User is authenticated should access the page
+        """
+        self.client.login(username='test', password='test1234')
+        response = self.client.get('/first/share/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_share_post_url(self):
+        self.client.login(username='test', password='test1234')
+        response = self.client.get('/first/share/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_share_post_url_name(self):
+        self.client.login(username='test', password='test1234')
+        response = self.client.get(
+            reverse('blog:share_article', kwargs={'slug': 'first'}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_share_post_template_correct(self):
+        self.client.login(username='test', password='test1234')
+        response = self.client.get(
+            reverse('blog:share_article', kwargs={'slug': 'first'}))
+        self.assertTemplateUsed(response, 'blog/share_post.html')
+
+    def test_share_post_request_post(self):
+        data = {
+            'name': 'test_post',
+            'email': 'test_post@gmail.com',
+            'message': 'test-post message',
+        }
+        self.client.login(username='test', password='test1234')
+        response = self.client.post(
+            reverse('blog:share_article', kwargs={'slug': 'first'}), data=data, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, '/first/')
 
 
 # ============== Test Category View ==============
