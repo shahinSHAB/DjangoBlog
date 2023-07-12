@@ -38,23 +38,23 @@ class CustomLoginView(mixins.AuthenticateOrRedirectMixins, SuccessMessageMixin, 
 
 
 # =========== Custom Logout View ============
-class CustomLogoutView(LogoutView):
+class CustomLogoutView(mixins.LogOutOrRedirectMixins, LogoutView):
     # template_name = 'accounts/logout.html'
-    
+
     def get(self, request, *args, **kwargs):
         messages.success(request, 'You logged out successfully')
         return super().get(request, *args, **kwargs)
-        
+
     def get_redirect_url(self):
         return reverse_lazy('accounts:login')
- 
-    
+
+
 # ============== SignUp View ===============
 class SignUpView(mixins.AuthenticateOrRedirectMixins, generic.CreateView):
     model = get_user_model()
     template_name = 'accounts/signup.html'
     form_class = SignUpForm
-    
+
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_active = False
