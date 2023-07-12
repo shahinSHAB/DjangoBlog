@@ -305,8 +305,8 @@ class SharePostApiView(generics.GenericAPIView):
                 'api:article_detail', kwargs={'slug': obj.slug}))
             subject = f'Article {obj.title}'
             f_email = 'someaccount@gamil.com'
-            message = f"hi {vd['name']}. user {self.request.user.username} \
-                send to this email. \nlink is : {obj_path} \n {vd['message']}"
+            message = f"hi {vd.get('name', None)}. user {self.request.user.username}" \
+                f" send to you this email. \nlink is : {obj_path} \n {vd.get('message', None)}"
             send_mail(subject, message, f_email, [vd['email']])
             return Response(data={'message': 'post shared successfully'},
                             status=status.HTTP_200_OK)

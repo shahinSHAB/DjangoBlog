@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 # ============= Category Model Serializer ================
 class CategoryModelSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Category
         fields = (
@@ -45,10 +45,10 @@ class CategoryModelSerializer(serializers.ModelSerializer):
             'status',
         )
 
-    
+
 # ============= Blog Model Serializer ================
 class BlogModelSerializer(serializers.ModelSerializer):
-    
+
     def author_username(self, instance):
         """returns username of author from each instance
         Args:
@@ -57,7 +57,7 @@ class BlogModelSerializer(serializers.ModelSerializer):
             str: username of article's author
         """
         return instance.author.username
-    
+
     def thumbnail_path(self, instance):
         """returns path of thumbnail from each instance
         Args:
@@ -66,7 +66,7 @@ class BlogModelSerializer(serializers.ModelSerializer):
             Url: url of article's thumbnail
         """
         return instance.thumbnail.url
-    
+
     def category_title(self, instance):
         """returns title of all active categories from each instance
         Args:
@@ -76,10 +76,11 @@ class BlogModelSerializer(serializers.ModelSerializer):
         """
         active_categories = instance.category.active()
         return [category.title for category in active_categories]
-    
+
     author = serializers.SerializerMethodField(method_name='author_username')
     thumbnail = serializers.SerializerMethodField(method_name='thumbnail_path')
     category = serializers.SerializerMethodField(method_name='category_title')
+
     class Meta:
         model = Blog
         fields = (
@@ -100,10 +101,10 @@ class BlogModelSerializer(serializers.ModelSerializer):
 
 # ============ Comment Model Serializer ==============
 class CommentModelSerializer(serializers.ModelSerializer):
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        request = self.context.pop('request')
+        request = self.context.get('request')
         obj_slug = self.context['view'].kwargs.get('slug')
         article = Blog.objects.get(slug=obj_slug)
         self.fields['publish'].initial = timezone.now()
@@ -135,10 +136,19 @@ class CommentModelSerializer(serializers.ModelSerializer):
             'updated',
         )
 
+    def create(self, validated_data):
+        request = self.context.get('request')
+        obj_slug = self.context['view'].kwargs.get('slug')
+        article = Blog.objects.get(slug=obj_slug)
+        if request.user.is_superuser:
+            return Comment.objects.create(**validated_data)
+        return Comment.objects.create(**validated_data,
+                                    author=request.user, article=article)
+
 
 # ================= Share Post Serializer =====================
 class SharePostSerializer(serializers.Serializer):
-    name = serializers.CharField(allow_blank=True, max_length=100,
-                                 style={'base_html': 'textarea.html'})
+    name = serializers.CharField(allow_blank=True, max_length=100, read_only=True)
     email = serializers.EmailField(max_length=100)
-    message = serializers.CharField(allow_blank=True, max_length=400)
+    message = serializers.CharField(allow_blank=True, max_length=400, read_only=True,
+                                    style={'base_html': 'textarea.html'})

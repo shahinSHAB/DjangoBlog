@@ -634,7 +634,7 @@ class TestBlogApiViews(APITestCase):
         self.assertEqual(len(response.data), 2)
         self.assertNotEqual(len(response.data), 3)
 
-    # ----- test articles period not correct url
+    # -------- test articles period not correct url ------------
     def test_articles_period_not_correct_url(self):
         self.client.login(
             username='test',
@@ -1320,7 +1320,7 @@ class TestCommentsApiViews(APITestCase):
         self.client.login(username='test', password='1234')
         response = self.client.get('/api/v1/comments/first/create/')
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-        
+
     def test_comment_create_api_view(self):
         self.client.login(username='test', password='1234')
         response = self.client.post(
@@ -1328,7 +1328,7 @@ class TestCommentsApiViews(APITestCase):
             data={
                 'name':'person_2',
                 'text':'text_2',
-                'author':1,
+                'author': 1,
                 'article':1,
                 'status':True,
                 'reply':'',
@@ -1339,14 +1339,14 @@ class TestCommentsApiViews(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Comment.objects.count(), 3)
-        self.assertEqual(Comment.objects.last().name, 'person_2')
-        self.assertEqual(Comment.objects.last().text, 'text_2')
-        
+        self.assertEqual(Comment.objects.first().name, 'person_2')
+        self.assertEqual(Comment.objects.first().text, 'text_2')
+
     # ----------- test comment update api view -----------
     def test_comment_update_api_view_without_login(self):
         response = self.client.get('/api/v1/comments/first/1/update/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        
+
     def test_comment_update_api_view_with_login_without_staff_user(self):
         """User is not authenticated and is not superuser or user is not
         authenticated and is not staff should not access api
@@ -1384,10 +1384,7 @@ class TestCommentsApiViews(APITestCase):
                 'author':1,
                 'article':1,
                 'status':True,
-                'reply':'',
-                'agree':0,
-                'disagree':1,
-                'publish': '2022-11-04 12:40:43',
+                'reply':''
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -1395,8 +1392,8 @@ class TestCommentsApiViews(APITestCase):
         self.assertEqual(Comment.objects.count(), 2)
         self.assertEqual(Comment.objects.last().name, 'person_updated')
         self.assertEqual(Comment.objects.last().text, 'text_updated')
-        self.assertEqual(Comment.objects.last().agree, 0)
-        self.assertEqual(Comment.objects.last().disagree, 1)
+        self.assertEqual(Comment.objects.last().agree, 12)
+        self.assertEqual(Comment.objects.last().disagree, 5)
         
         
     # ----------- test comment delete api view -----------
@@ -1437,4 +1434,60 @@ class TestCommentsApiViews(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Comment.objects.count(), 1)
         
-        
+    # ----------- test Share Post api view -----------
+    def test_share_post_api_view_without_login(self):
+        response = self.client.get('/api/v1/articles/first/share/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_share_post_api_view_with_login(self):
+        """User is is not authenticated should access api
+        """
+        self.client.login(username='test', password='1234')
+        response = self.client.get('/api/v1/articles/first/share/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_share_post_api_view_url_name(self):
+        self.client.login(username='test', password='1234')
+        response = self.client.get(reverse('api:share_article', kwargs={'slug':'first'}))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_share_post_api_view_get_request(self):
+        self.client.login(username='test', password='1234')
+        response = self.client.get(reverse('api:share_article', kwargs={'slug':'first'}))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['title'], 'First')
+        self.assertEqual(response.data['slug'], 'first')
+        self.assertEqual(response.data['view'], 1)
+        self.assertEqual(response.data['author'], 'test')  # author indicate user's name
+
+    def test_share_post_api_view_post_request(self):
+        data = {
+            'name': 'test_post',
+            'email': 'test_post@gmail.com',
+            'message': 'test_post message',
+        }
+        self.client.login(username='test', password='1234')
+        response = self.client.post(reverse('api:share_article', kwargs={'slug':'first'}),
+                                    data=data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['message'], 'post shared successfully')
+
+    def test_share_post_api_view_post_request_without_name_and_message(self):
+        data = {
+            'email': 'test_post@gmail.com',
+        }
+        self.client.login(username='test', password='1234')
+        response = self.client.post(reverse('api:share_article', kwargs={'slug':'first'}),
+                                    data=data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['message'], 'post shared successfully')
+
+    def test_share_post_api_view_post_request_without_email(self):
+        data = {
+            'name': 'test_post',
+            'message': 'test_post message',
+        }
+        self.client.login(username='test', password='1234')
+        response = self.client.post(reverse('api:share_article', kwargs={'slug':'first'}),
+                                    data=data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
