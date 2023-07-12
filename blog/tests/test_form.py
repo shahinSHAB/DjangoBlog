@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from ..models import Blog, Category
-from ..forms import BLogForm, CategoryForm
+from ..forms import BLogForm, CategoryForm, SharePostForm
 
 MODELS = [Blog, Category,]
 
@@ -31,7 +31,7 @@ class TestFormModels(TestCase):
             title='Test1 Category',
             slug='test1-category',
             position=2,
-            status = True
+            status=True
         )
 
     def tearDown(self):
@@ -106,3 +106,52 @@ class TestFormModels(TestCase):
         form = CategoryForm(data=data, user=self.user)
         self.assertFalse(form.is_valid())
         self.assertEqual(Category.objects.count(), 2)
+
+    # ------------- Test SharePost Form ------------
+    def test_share_post_form_valid(self):
+        data = {
+            'name': 'test_name',
+            'email': 'test_name@gmail.com',
+            'message': 'test message'
+        }
+        form = SharePostForm(data=data)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['name'], data['name'])
+        self.assertEqual(form.cleaned_data['email'], data['email'])
+        self.assertEqual(form.cleaned_data['message'], data['message'])
+
+    def test_share_post_form_invalid(self):
+        data = {
+            'name': 'test_name',
+            'message': 'test message'
+        }
+        form = SharePostForm(data=data)
+        self.assertFalse(form.is_valid())
+
+    def test_share_post_form_valid_without_message(self):
+        data = {
+            'name': 'test_name',
+            'email': 'test_name@gmail.com',
+        }
+        form = SharePostForm(data=data)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['name'], data['name'])
+        self.assertEqual(form.cleaned_data['email'], data['email'])
+
+    def test_share_post_form_valid_without_name(self):
+        data = {
+            'email': 'test_name@gmail.com',
+            'message': 'test message'
+        }
+        form = SharePostForm(data=data)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['message'], data['message'])
+        self.assertEqual(form.cleaned_data['email'], data['email'])
+
+    def test_share_post_form_valid_without_name_and_message(self):
+        data = {
+            'email': 'test_name@gmail.com',
+        }
+        form = SharePostForm(data=data)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['email'], data['email'])
